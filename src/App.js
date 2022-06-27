@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./nav/nav";
+import './css/App.css';
 
 function App() {
+  const nav = <Navbar />
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {nav}
+      <iframe
+        src="https://naver.com"
+        name="프레임 이름"
+        width="100%"
+        height="575px"
+        sandbox="allow-scripts allow-popups">
+        iframe를 지원하지 않는 브라우저인 경우 대체정보를 제공  
+      </iframe>
     </div>
   );
 }

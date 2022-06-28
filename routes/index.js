@@ -2,13 +2,14 @@ var express = require('express');
 var axios = require('axios');
 var router = express.Router();
 
-
-const requestUrl = 'https://example.com';
+const origin = 'http://localhost:3000';
 
 router.get('/', async function(req, res) {
+    const url = req.query.url;
+    if (!url) res.render('help');
     delete req.headers.host;
     try {
-        const result = await axios.get(requestUrl, {
+        const result = await axios.get(url, {
             headers: {...req.headers}
         });
         res.send(result.data);

@@ -17,7 +17,7 @@
     cursor: pointer;
     width: 30px;
     height: 30px;
-    transform: translateY(5px);
+    transform: translateY(-10px);
 }
 
 .progress-bar-container button .token {
@@ -26,6 +26,7 @@
 }
 
 .progress-bar-container .progress-bar {
+    position: relative;
     display: inline-block;
     width: 150px;
     height: 30px;
@@ -44,12 +45,16 @@
     width: 50%;
     height: 100%;
     background-color: black;
-    color: white;
+}
+
+.progress-bar-container .progress-bar .g_percent{
+    position: absolute;
+    top: 50%; left: 150%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-weight: bold;
     text-align: center;
     font-size: 1em;
 }
 
-.progress-bar-container .progress-bar .gage .g{
-    top: 10px;  
-}
 

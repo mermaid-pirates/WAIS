@@ -2,8 +2,6 @@ var express = require('express');
 var axios = require('axios');
 var router = express.Router();
 
-const origin = 'http://localhost:3000';
-
 router.get('/', async function(req, res) {
     const url = req.query.url;
     if (!url) res.render('help');

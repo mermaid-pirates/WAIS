@@ -4,16 +4,15 @@ html
     head
         title 스타일 테스트 화면
         link(rel='stylesheet', href='/stylesheets/style.css')
+        style.dark-mode.
+            #{result}
     body
         block content
             #container
                 p 텍스트텍스트텍스트
-                form(action='/style' method='post')
-                    - for (var i=0; i < filelist.length; i++){
-                    - var file = filelist[i];
+                form(action='/style/dark' method='post')
                     label
-                        input(type='checkbox' name='style_change' value='#{file}')
-                        | #{file}
-                    -}
+                        input(type='checkbox' name='style_change' value='dark')
+                        | Dark mode
                     p 
                         input(type='submit' value='submit')

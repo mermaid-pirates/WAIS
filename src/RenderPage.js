@@ -7,7 +7,7 @@ function RenderPage(props){
     return (
         <div className="rendered-page">
             <iframe
-                src={props.src}
+                src="./test.html"
                 title = {title}
                 style={props.sheet} 
                 name={name}

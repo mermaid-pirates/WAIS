@@ -10,9 +10,12 @@ html
         block content
             #container
                 p 텍스트텍스트텍스트
-                form(action='/style/dark' method='post')
+                form(action='/style/color' method='post')
                     label
-                        input(type='checkbox' name='style_change' value='dark')
+                        input(type='radio' name='style_change' value='original')
+                        | Original
+                    label
+                        input(type='radio' name='style_change' value='dark')
                         | Dark mode
                     p 
-                        input(type='submit' value='submit')
+                        input(type='submit' value='스타일 적용')

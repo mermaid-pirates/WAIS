@@ -5,7 +5,7 @@ const dark = require('../services/dark');
 // TODO: 다크모드 API
 
 // 테스트용 페이지
-router.get('/dark', (req, res) => {
+router.get('/color', (req, res) => {
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
     var context = {};
     req.app.render('style-test', context, function (err, html) {
@@ -14,11 +14,14 @@ router.get('/dark', (req, res) => {
     });
 });
 
-router.post('/dark', (req, res) => {
-    var style_sheet = dark.getDarkModeStyle();
+router.post('/color', (req, res) => {
+    var style = '';
+    var selected_style = req.body.style_change;
+    if(selected_style === 'dark') style += dark.getStyle();
+    var context = {result:style}
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
-    var context = {result:style_sheet};
-    req.app.render('style-test', context, function (err, html) {
+    // pug의 #{result}에 스타일 시트 내용 삽입
+    req.app.render('style-test', context, function (err, html) { 
         res.end(html);
     })
 });

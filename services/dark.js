@@ -1,5 +1,5 @@
 module.exports = {
-    getDarkModeStyle : function() {
+    getStyle : function() {
         const style = [];
         style.push(`html, body {`);
         style.push(`    background-color: black;`);

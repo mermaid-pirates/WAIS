@@ -4,8 +4,6 @@ html
     head
         title 스타일 테스트 화면
         link(rel='stylesheet', href='/stylesheets/style.css')
-        style.dark-mode.
-            #{result}
     body
         block content
             #container
@@ -17,5 +15,8 @@ html
                     label
                         input(type='radio' name='style_change' value='dark')
                         | Dark mode
+                    label
+                        input(type='radio' name='style_change' value='color_weakness')
+                        | Color weakness mode
                     p 
                         input(type='submit' value='스타일 적용')

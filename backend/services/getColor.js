@@ -48,4 +48,4 @@ const isHexColor = (color) => {
     return /#[\da-f]{6}/i.test(color);
 };
 
-module.exports = getColor;
+module.exports = { getColor };

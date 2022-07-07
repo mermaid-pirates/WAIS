@@ -16,7 +16,10 @@ const getColor = (targetColor) => {
     let minDistance = getDistanceOfVector([0, 0, 0], [255, 255, 255]);
     Object.keys(ColorTable).forEach(key => {
         const distance = getDistanceOfVector(colorToVector(ColorTable[key]), targetColorVector);
-        if (distance < minDistance) color = ColorTable[key];
+        if (distance < minDistance) {
+            minDistance = distance;
+            color = ColorTable[key];
+        }
     });
     return color;
 };

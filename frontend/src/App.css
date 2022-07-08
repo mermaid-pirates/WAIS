@@ -4,6 +4,117 @@
 }
 
 body {
+    margin: 0 !important;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
+
+.App {
+    width: 1000px; height: 100vh;
+    margin: 0 auto;
+}
+
+.App .header::before {
+    display: block;
+    content: '';
+    width: 100vw; height: 70px;
+    background-color: #eee;
+    position: absolute; top: 0; left: 0;
+    z-index: -1;
+}
+
+.App .header {
+    width: 100%; height: 70px;
+}
+
+.App .header .logo {
+    clear: both;
+    line-height: 70px;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.App .header .logo .title{
+    font-size: 2em !important;
+    float: left;
+    margin-right: 10px;
+}
+
+.App .header .logo .logo_img{
+    width: 55px; height: 55px;
+    float: left;
+}
+
+.App .header .service_form {
+    width: 500px;
+    text-align: center;
+    position: relative;
+    top: 12.5px; left: 250px;
+    float: left;
+}
+
+.App .header .service_form input[type="url"]{
+    padding: 5px;
+    font-size: 2em;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.App .header .service_form input[type="submit"]{
+    padding: 5px 15px;
+    font-size: 2em;
+    border-radius: 5px;
+    background-color: #6BCB77; color: #eee;
+    border: none;
+}
+
+.App .contents::before {
+    display: block;
+    content: '';
+    width: 100vw; height: 100vh;
+    position: absolute; top: 0; left: 0;
+    z-index: -2;
+    background-color: #270082 !important;
+}
+
+.App aside {
+    position: absolute;
+    width: 265px;
+    top: 70px; left: 0;
+}
+
+.App aside .service_name {
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.App aside .service_destination {
+    font-weight: bold;
+    color: #fff;
+    padding-left: 10px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.rendered-page {
+    background-color: #fff;
+    width: 100%; height: 675px;
+    margin: 5px auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 2;
+    border: 2px solid yellow;
+}
+
+.rendered-page::-webkit-scrollbar {
+    width: 10px;
+}
+.rendered-page::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+}
+.rendered-page::-webkit-scrollbar-track {
+    background-color: grey;
+}
+

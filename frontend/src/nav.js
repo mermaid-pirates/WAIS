@@ -2,7 +2,6 @@ import React from 'react';
 import './nav.css';
 import ToggleSwitch from './ToggleSwitch';
 import RangeSlider from './RangeSlider';
-import UpDownBtn from './updownbutton';
 
 function Navbar(props){
     const show_orign_page = <ToggleSwitch label="원본 페이지 보기" e={props.e} func="show_origin_page"/>;

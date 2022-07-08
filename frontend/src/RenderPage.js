@@ -1,21 +1,38 @@
+import { useEffect, useRef } from "react";
+
+function getQueryStringObject() {
+    var a = window.location.search.substr(1).split('&');
+    if (a === "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i) {
+        var p = a[i].split('=', 2);
+        if (p.length === 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+}
+
 function RenderPage(props){
-    const title = "iframe"
-    const name = 'rendered page';
-    const width = '100%';
-    const height = '575px';
+    const page_ref = useRef();
+
+    useEffect(()=>{
+        const query_url = getQueryStringObject(window.location.search).search;
+        const xml = new XMLHttpRequest();
+        xml.onreadystatechange = function(){
+            if(this.status === 200 && this.readyState === this.DONE) {
+                page_ref.current.innerHTML = xml.responseText;
+            }
+        }
+        xml.open('GET', `${props.server}?url=${query_url}`, true);
+        xml.send();
+    });
+    
 
     return (
-        <div className="rendered-page">
-            <iframe
-                src="./test.html"
-                title = {title}
-                style={props.sheet} 
-                name={name}
-                width={width}
-                height={height}
-                sandbox="allow-scripts allow-popups">
-            iframe을 지원하지 않는 브라우저는 사용할 수 없습니다.
-            </iframe>
+        <div className="rendered-page" style={props.requestStyle}>
+            <div id="body" ref={page_ref}></div>
         </div>
     );
 }

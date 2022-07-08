@@ -1,49 +1,46 @@
 import './App.css';
 import { useState } from "react";
-import Navbar from './nav';
 import RenderPage from './RenderPage';
+import ToolBar from './toolBar';
 
 function App(props) {
-  const request_url = 'https://127.0.0.1:4000';
-  const page_url = "https://www.oidc.co.kr/home";
+  const request_url = 'http://127.0.0.1:4000/';
   const [styleSheet, setStyle] = useState({});
 
 
   const event_controller = (e, func)=>{
-    if(func === "show_origi n_page"){
+    if(func === "show_origin_page"){
       console.log("show_origin_page");
       fetch(request_url)
         .then((res)=>{
           
         })
-    } else if(func === "restrict_blick"){
-
-    } else if(func === "contrast_color_up"){
-
-    } else if(func === "contrast_color_down"){
-
-    } else if(func === "contrast_brightness_up"){
-
-    } else if(func === "contrast_brightness_down"){
-
-    } else if(func === "font_sizing_up"){
-
-    } else if(func === "font_sizing_down"){
-
-    }
+    } 
   }
 
-  const nav = <Navbar e={event_controller}/>
-  const render_page = <RenderPage src={page_url} sheet={styleSheet}/>
+  const render_page = <RenderPage requestStyle={styleSheet} server={request_url}/>
+  const tool_maneger = <ToolBar e={event_controller} />;
 
   return (
     <div className="App">
-      {nav}
-      {render_page}
-
-      <script>
-        window.addEventListenr('load')
-      </script>
+      <header className='header'>
+          <a className='logo' href="/">
+          <h1 className='title'>인어공주해적단</h1>
+          <img className='logo_img' src='./mermaid_pirate.png' alt="group_logo"></img>
+          </a>
+          <form className='service_form' action="/searching">
+            <input type="url" name="search" placeholder="Enter Url"></input>
+            <input type="submit" value="Go!"></input>
+        </form>
+      </header>
+      <aside>
+          <h2 className='service_name'>웹 접근성 향상 서비스</h2>
+          <p className='service_destination'> (WAIS) 모두가 모든 웹페이지를<br></br>사용할 수 있기를</p>
+          {tool_maneger}
+      </aside>
+      <div className='contents'>
+        {render_page}
+      </div>
     </div>
   );
 }

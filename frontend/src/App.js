@@ -5,16 +5,19 @@ import ToolBar from './toolBar';
 
 function App(props) {
   const request_url = 'http://127.0.0.1:4000/';
-  const [styleSheet, setStyle] = useState({});
+  const [styleSheet, setStyle] = useState({
+    'background-color': 'green',
+    'color': 'red',
+  });
 
 
-  const event_controller = (e, func)=>{
-    if(func === "show_origin_page"){
-      console.log("show_origin_page");
-      fetch(request_url)
-        .then((res)=>{
+  const event_controller = (e)=>{
+    if(true){
+      
+      // fetch(request_url)
+      //   .then((res)=>{
           
-        })
+      //   })
     } 
   }
 

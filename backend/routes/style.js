@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const dark = require('../services/dark');
 const weak = require('../services/colorWeakness');
+const cont = require('../services/highContrast');
 const CSSadder = require('../services/addStyleSheet');
 
 const example_html_data = `<html><head>
@@ -62,7 +63,6 @@ router.get('/color-test', (req, res) => {
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
     var context = {};
     req.app.render('color-test', context, function (err, html) {
-        console.log('rendered : ' + html);
         res.end(html);
     });
 });
@@ -80,6 +80,9 @@ router.post('/color', (req, res) => {
         case 'color_weakness':
             style = weak.getStyle();
             html_data = weak.getRenderedHtml(html_data);
+            break;
+        case 'high_contrast':
+            style = cont.getStyle();
             break;
     }            
     var result = CSSadder.setStyle(html_data, style, style_name);            

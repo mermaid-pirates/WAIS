@@ -16,8 +16,7 @@ const example_html_data = `<html><head>
         background-color: #f0f0f2;
         margin: 0;
         padding: 0;
-        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;   
     }
     div {
         width: 600px;
@@ -67,9 +66,9 @@ router.get('/color-test', (req, res) => {
 });
 
 router.post('/color', (req, res) => {
-    var style_name = req.body.style_change;
-    var html_data = req.body.html_data || example_html_data;
-    var style = '';
+    const style_name = req.body.style_change;
+    let html_data = req.body.html_data || example_html_data;
+    let style = '';
     switch(style_name) {
         case 'original':
             break;
@@ -84,7 +83,7 @@ router.post('/color', (req, res) => {
             style = cont.getStyle();
             break;
     }            
-    var result = CSSadder.setStyle(html_data, style, style_name);            
+    const result = CSSadder.setStyle(html_data, style, style_name);            
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
     res.end(result);
 });

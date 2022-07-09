@@ -2,14 +2,14 @@ const color_converter = require('./getColor');
 
 const getStyle = () => {
     const style = [];
-    style.push(`html, body {`);
+    style.push(`#body html, body {`);
     style.push(`    background-color: #ffffff;`);
     style.push(`    color: #000000;`);
     style.push('}');
-    style.push('a {');
+    style.push('#body a {');
     style.push(`    color: #0072b1;`);
     style.push('}');
-    style.push('::placeholder {');
+    style.push('#body ::placeholder {');
     style.push(`    color: #a9a9a9;`);
     style.push('}');
     return style.join('\n');

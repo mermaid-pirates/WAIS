@@ -7,20 +7,19 @@ function RangeSlider(props){
 
     const upRange = (e)=>{
         if(gage<100){
+            props.e(e);
             setGage(++gage);
             bar.current.style.width = gage+"%";
-            props.e(e, props.func+"_up");
         } else {
             bar.current.style.width = "100%";
         }
     };
 
     const downRange = (e)=>{
-        props.e(e);
         if(gage>0){
+            props.e(e);
             setGage(--gage);
             bar.current.style.width = gage+"%";
-            props.e(e, props.func+"_down");
         } else {
             bar.current.style.width = "0%";
         }

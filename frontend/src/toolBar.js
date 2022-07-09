@@ -1,24 +1,32 @@
 import ToggleSwitch from './ToggleSwitch';
-// import RangeSlider from './RangeSlider';
+import RangeSlider from './RangeSlider';
 
-function ToolBar(){
-    const tools = [
+function ToolBar(props){
+    const toggles_list = [
         {label: "원본페이지보기"},
-        {label: "글자확대"},
-        {label: "글자축소"},
         {label: "색상대비"},
         {label: "명도대비"},
         {label: "깜박임제한"}
     ];
 
-    const toolbar = tools.map((el, idx)=>{
-        return <ToggleSwitch key={idx} label={el.label} />; 
+    const ranges_list = [
+        {label: "글자확대"},
+        {label: "글자축소"}
+    ]
+
+    const toggles = toggles_list.map((el, idx)=>{
+        return <ToggleSwitch key={idx} label={el.label} e={props.e}/>; 
+    })
+
+    const ranges = ranges_list.map((el, idx)=>{
+        return <RangeSlider key={idx} label={el.label} e={props.e}/>; 
     })
 
 
     return(
         <div className="tool-bar">
-            {toolbar}
+            {toggles}
+            {ranges}
         </div>
     )
 }

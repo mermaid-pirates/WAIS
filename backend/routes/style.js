@@ -18,16 +18,9 @@ router.get('/color-test', (req, res) => {
 });
 
 router.post('/color', (req, res) => {
-<<<<<<< HEAD
-    console.log(req.body);
-    var style_name = req.body.style_change;
-    var html_data = req.body.html_data || example_html_data;
-    var style = '';
-=======
     const style_name = req.body.style_change;
     let html_data = req.body.html_data || example_html_data;
     let style = '';
->>>>>>> ca8c5270f7b2967a4cbdde3bb41a8664b19460af
     switch(style_name) {
         case 'original':
             break;

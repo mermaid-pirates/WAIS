@@ -3,14 +3,22 @@ import { useState } from "react";
 import RenderPage from './RenderPage';
 import ToolBar from './toolBar';
 import dark from './api/dark';
+import color_weak from './api/color_weak';
+import origin from './api/origin';
+import high_contrast from './api/high';
 
 const request_url = 'http://127.0.0.1:4000/';
 const api_id = {
   dark: '00A',
+  color_weak: '00B',
+  origin_page: '00C',
+  high_contrast: '00D'
 };
 
 function App(props) {
-  const [styleSheet, setStyle] = useState({});
+  const [styleSheet, setStyle] = useState({
+    
+  });
 
   const [renderHTML, setHTML] = useState("");
 
@@ -21,6 +29,32 @@ function App(props) {
         return res.text();
       })
         .then((html)=>{
+          setHTML(html)
+        })
+    } else if(api === api_id.color_weak){
+      const res = color_weak(request_url, renderHTML);
+      res.then((res)=>{
+        return res.text();
+      })
+        .then((html)=>{
+          setHTML(html)
+        })
+    } else if(api === api_id.origin_page){
+      const res = origin(request_url, renderHTML);
+      res.then((res)=>{
+        return res.text();
+      })
+        .then((html)=>{
+          console.log(html)
+          setHTML(html)
+        })
+    } else if(api === api_id.high_contrast){
+      const res = high_contrast(request_url, renderHTML);
+      res.then((res)=>{
+        return res.text();
+      })
+        .then((html)=>{
+          console.log(html)
           setHTML(html)
         })
     }

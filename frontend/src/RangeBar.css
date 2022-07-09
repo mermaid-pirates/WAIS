@@ -18,7 +18,7 @@
 }
 
 .progress-bar-container button .token {
-    font-size: 2em;
+    font-size: 25px;
     width: 80%; height: 80%;
 }
 
@@ -37,7 +37,7 @@
     display: block;
     content:"";
     border-radius: 12px;
-    width: 50%;
+    width: 0%;
     height: 100%;
     background-color: #6BCB77;
 }

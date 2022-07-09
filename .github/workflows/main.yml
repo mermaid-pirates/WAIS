@@ -18,6 +18,7 @@ jobs:
   subtree:
     runs-on: ubuntu-latest
     steps:
+      - run: ls -la
       - run: git subtree push --prefix backend https://github.com/mermaid-pirates/mermaid-backend.git main
       - run: git subtree push --prefix frontend https://github.com/mermaid-pirates/mermaid-frontend.git main
 

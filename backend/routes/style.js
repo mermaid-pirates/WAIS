@@ -42,10 +42,13 @@ router.post('/color', (req, res) => {
 
 // TODO: 글자크기 API
 router.post('/text', (req, res) => {
-    const { textSize } = req.body;
-    res.json({
-        style: `html { font-size: ${parseInt(textSize)+50}%; }`
-    })
+    const style_name = req.body.style_change;
+    const text_size = req.body.text_size;
+    const html_data = req.body.html_data || example_html_data;
+    const style = `#body { font-size: ${parseInt(text_size)}% !important; }`;
+    const result = CSSadder.setStyle(html_data, style, style_name);
+    res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
+    res.end(result);
 });
 
 module.exports = router;

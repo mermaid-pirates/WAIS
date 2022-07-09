@@ -11,13 +11,18 @@ const ColorTable = {
 };
 
 const getColor = (targetColor) => {
-    const targetColorVector = colorToVector(targetColor);
+    // TODO: hex 형태가 아닌 color의 처리는 어떻게?
+    if (!isHexColor(targetColor)) {
+        console.log("not hex color. color is: " + targetColor);
+        return;
+    }
+    const target_color_vector = colorToVector(targetColor);
     let color = null;
-    let minDistance = getDistanceOfVector([0, 0, 0], [255, 255, 255]);
+    let min_distance = getDistanceOfVector([0, 0, 0], [255, 255, 255]);
     Object.keys(ColorTable).forEach(key => {
-        const distance = getDistanceOfVector(colorToVector(ColorTable[key]), targetColorVector);
-        if (distance < minDistance) {
-            minDistance = distance;
+        const distance = getDistanceOfVector(colorToVector(ColorTable[key]), target_color_vector);
+        if (distance < min_distance) {
+            min_distance = distance;
             color = ColorTable[key];
         }
     });
@@ -25,8 +30,6 @@ const getColor = (targetColor) => {
 };
 
 const colorToVector = (color) => {
-    // TODO: hex 형태가 아닌 color의 처리는 어떻게?
-    if (!isHexColor) return;
     const vector = [
         hex2dec(color.slice(1, 3)),
         hex2dec(color.slice(3, 5)),
@@ -42,9 +45,9 @@ const getDistanceOfVector = (v1, v2) => {
     return distance;
 };
 
-const hex2dec = (hexString) => {
-    yourNumber = parseInt(hexString, 16);
-    return yourNumber;
+const hex2dec = (hex_string) => {
+    your_number = parseInt(hex_string, 16);
+    return your_number;
 };
 
 const isHexColor = (color) => {

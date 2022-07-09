@@ -2,7 +2,8 @@ export default function dark(request, html){
     return fetch(`${request}style/color`, {
         method: 'POST',
         headers: {
-            Accept: 'text/plain'
+            Accept: 'application/json',
+            'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify({
             html_data: html,

@@ -24,7 +24,6 @@ function App(props) {
         return res.text();
       })
         .then((html)=>{
-          console.log(html);
           setHTML(html)
         })
     }
@@ -34,7 +33,7 @@ function App(props) {
   const tool_maneger = <ToolBar e={event_controller} api_id={api_id}/>;
 
   return (
-    <div className="App">
+    <div className="App-madebymermaid">
       <header className='header'>
           <a className='logo' href="/">
           <h1 className='title'>인어공주해적단</h1>

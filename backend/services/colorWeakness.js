@@ -16,10 +16,10 @@ const getStyle = () => {
 }
 
 const getRenderedHtml = (html_data) => {
-    var pattern = /#[\da-f]{6}/gi;
+    const pattern = /#[\da-f]{6}/gi;
     if(pattern.test(html_data)) {
-        var target_list = [...new Set(html_data.match(pattern))];
-        for(var target of target_list) {
+        const target_list = [...new Set(html_data.match(pattern))];
+        for(const target of target_list) {
             html_data = html_data.replace(new RegExp(target, 'gi'), color_converter.getColor(target));
         }
     }

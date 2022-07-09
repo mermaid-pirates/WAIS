@@ -2,24 +2,26 @@ import { useState, useRef } from "react";
 import './RangeBar.css';
 
 function RangeSlider(props){
-    let [gage, setGage] = useState(50);
+    let [gage, setGage] = useState(100);
     const bar = useRef();
 
     const upRange = (e)=>{
-        if(gage<100){
+        if(gage<200){
             props.e(e, props.api_id);
-            setGage(++gage);
-            bar.current.style.width = gage+"%";
+            bar.current.style.width = (gage-90) +"%";
+            setGage(gage+10);
+            
         } else {
             bar.current.style.width = "100%";
         }
     };
 
     const downRange = (e)=>{
-        if(gage>0){
+        if(gage>100){
             props.e(e, props.api_id);
-            setGage(--gage);
-            bar.current.style.width = gage+"%";
+            bar.current.style.width = (gage-110) +"%";
+            setGage(gage-10);
+            
         } else {
             bar.current.style.width = "0%";
         }

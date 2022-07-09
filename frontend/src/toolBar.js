@@ -3,10 +3,10 @@ import RangeSlider from './RangeSlider';
 
 function ToolBar(props){
     const toggles_list = [
-        {label: "원본페이지보기", api: null},
-        {label: "색상대비", api: props.api_id.dark},
-        {label: "명도대비", api: null},
-        {label: "깜박임제한", api: null}
+        {label: "원본페이지보기", api: props.api_id.origin_page},
+        {label: "다크모드", api: props.api_id.dark},
+        {label: "색맹모드", api: props.api_id.color_weak},
+        {label: "고대비모드", api: props.api_id.high_contrast}
     ];
 
     const ranges_list = [

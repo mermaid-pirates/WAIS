@@ -61,8 +61,7 @@ const example_html_data = `<html><head>
 // 테스트용 페이지
 router.get('/color-test', (req, res) => {
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
-    var context = {};
-    req.app.render('color-test', context, function (err, html) {
+    req.app.render('color-test', function (err, html) {
         res.end(html);
     });
 });

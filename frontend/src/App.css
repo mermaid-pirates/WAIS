@@ -10,12 +10,12 @@ body {
     overflow: hidden;
 }
 
-.App {
+.App-madebymermaid {
     width: 100%; height: 100vh;
     margin: 0 auto;
 }
 
-.App .header::before {
+.App-madebymermaid .header::before {
     display: block;
     content: '';
     width: 100vw; height: 70px;
@@ -24,30 +24,30 @@ body {
     z-index: -1;
 }
 
-.App .header {
+.App-madebymermaid .header {
     width: 100%; height: 70px;
     padding-left: 50px
 }
 
-.App .header .logo {
+.App-madebymermaid .header .logo {
     clear: both;
     line-height: 70px;
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
-.App .header .logo .title{
+.App-madebymermaid .header .logo .title{
     font-size: 2em !important;
     float: left;
     margin-right: 10px;
 }
 
-.App .header .logo .logo_img{
+.App-madebymermaid .header .logo .logo_img{
     width: 55px; height: 55px;
     float: left;
 }
 
-.App .header .service_form {
+.App-madebymermaid .header .service_form {
     width: 500px;
     text-align: center;
     position: absolute;
@@ -55,14 +55,14 @@ body {
     float: left;
 }
 
-.App .header .service_form input[type="url"]{
+.App-madebymermaid .header .service_form input[type="url"]{
     padding: 5px;
     font-size: 2em;
     margin-right: 10px;
     border-radius: 5px;
 }
 
-.App .header .service_form input[type="submit"]{
+.App-madebymermaid .header .service_form input[type="submit"]{
     padding: 5px 15px;
     font-size: 2em;
     border-radius: 5px;
@@ -70,7 +70,7 @@ body {
     border: none;
 }
 
-.App .contents::before {
+.App-madebymermaid .contents::before {
     display: block;
     content: '';
     width: 100vw; height: 100vh;
@@ -79,7 +79,7 @@ body {
     background-color: #270082 !important;
 }
 
-.App aside {
+.App-madebymermaid aside {
     display: block;
     border-radius: 5px;
     background-color: #270082;
@@ -89,13 +89,13 @@ body {
     z-index: 10;
 }
 
-.App aside .service_name {
+.App-madebymermaid aside .service_name {
     color: #fff;
     padding: 30px 0;
     text-align: center;
 }
 
-.App aside .service_destination {
+.App-madebymermaid aside .service_destination {
     font-weight: bold;
     color: #fff;
     padding-left: 10px;

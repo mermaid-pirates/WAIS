@@ -19,11 +19,11 @@ const getStyle = () => {
     style.push(`    color: #009f73 !important;`);
     style.push('}');
     style.push(`::-moz-selection {`);
-    style.push(`    color: #0072b1 !important;`);
+    style.push(`    color: #000000 !important;`);
     style.push(`    background: #ffffff !important;`);
     style.push(`}`);
     style.push(`::selection {`);
-    style.push(`    color: #0072b1 !important;`);
+    style.push(`    color: #000000 !important;`);
     style.push(`    background: #ffffff !important;`);
     style.push(`}`);
     return style.join('\n');

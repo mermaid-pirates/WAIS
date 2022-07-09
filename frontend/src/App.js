@@ -10,10 +10,7 @@ const api_id = {
 };
 
 function App(props) {
-  const [styleSheet, setStyle] = useState({
-    'backgroundColor': 'green',
-    'color': 'red',
-  });
+  const [styleSheet, setStyle] = useState({});
 
   const [renderHTML, setHTML] = useState("");
 

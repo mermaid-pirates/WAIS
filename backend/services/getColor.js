@@ -1,5 +1,6 @@
 const ColorTable = {
     BLACK: "#000000",
+    GRAY: "#999999",
     WHITE: "#ffffff",
     ORANGE: "#e69f00",
     BLUE: "#0072b1",
@@ -11,11 +12,6 @@ const ColorTable = {
 };
 
 const getColor = (targetColor) => {
-    // TODO: hex 형태가 아닌 color의 처리는 어떻게?
-    if (!isHexColor(targetColor)) {
-        console.log("not hex color. color is: " + targetColor);
-        return;
-    }
     const target_color_vector = colorToVector(targetColor);
     let color = null;
     let min_distance = getDistanceOfVector([0, 0, 0], [255, 255, 255]);

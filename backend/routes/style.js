@@ -68,6 +68,7 @@ router.get('/color-test', (req, res) => {
 });
 
 router.post('/color', (req, res) => {
+    console.log(req.body);
     var style_name = req.body.style_change;
     var html_data = req.body.html_data || example_html_data;
     var style = '';

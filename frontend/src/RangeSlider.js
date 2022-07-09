@@ -7,7 +7,7 @@ function RangeSlider(props){
 
     const upRange = (e)=>{
         if(gage<100){
-            props.e(e);
+            props.e(e, props.api_id);
             setGage(++gage);
             bar.current.style.width = gage+"%";
         } else {
@@ -17,7 +17,7 @@ function RangeSlider(props){
 
     const downRange = (e)=>{
         if(gage>0){
-            props.e(e);
+            props.e(e, props.api_id);
             setGage(--gage);
             bar.current.style.width = gage+"%";
         } else {

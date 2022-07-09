@@ -2,27 +2,36 @@ import './App.css';
 import { useState } from "react";
 import RenderPage from './RenderPage';
 import ToolBar from './toolBar';
+import dark from './api/dark';
+
+const request_url = 'http://127.0.0.1:4000/';
+const api_id = {
+  dark: '00A',
+};
 
 function App(props) {
-  const request_url = 'http://127.0.0.1:4000/';
   const [styleSheet, setStyle] = useState({
-    'background-color': 'green',
+    'backgroundColor': 'green',
     'color': 'red',
   });
 
+  const [renderHTML, setHTML] = useState("");
 
-  const event_controller = (e)=>{
-    if(true){
-      
-      // fetch(request_url)
-      //   .then((res)=>{
-          
-      //   })
-    } 
+  const event_controller = async (e, api)=>{
+    if(api === api_id.dark){
+      const res = dark(request_url, renderHTML);
+      res.then((res)=>{
+        return res.text();
+      })
+        .then((html)=>{
+          console.log(html);
+          setHTML(html)
+        })
+    }
   }
 
-  const render_page = <RenderPage requestStyle={styleSheet} server={request_url}/>
-  const tool_maneger = <ToolBar e={event_controller} />;
+  const render_page = <RenderPage requestStyle={styleSheet} server={request_url} render={setHTML} body={renderHTML}/>
+  const tool_maneger = <ToolBar e={event_controller} api_id={api_id}/>;
 
   return (
     <div className="App">

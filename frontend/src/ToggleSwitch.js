@@ -2,7 +2,7 @@ import './ToggleSwitch.css'
 
 function ToggleSwitch(props){
     const toggle_e = (e)=>{
-        props.e(e);
+        props.e(e, props.api_id);
     }
 
     return (

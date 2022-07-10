@@ -81,7 +81,7 @@ body {
     background-color: #270082 !important;
 }
 
-.App-madebymermaid aside {
+.App-madebymermaid #tool-box {
     display: block;
     border-radius: 5px;
     background-color: #270082;
@@ -91,13 +91,13 @@ body {
     z-index: 30 !important;
 }
 
-.App-madebymermaid aside .service_name {
+.App-madebymermaid #tool-box .service_name {
     color: #fff;
     padding: 30px 0;
     text-align: center;
 }
 
-.App-madebymermaid aside .service_destination {
+.App-madebymermaid #tool-box .service_destination {
     font-weight: bold;
     color: #fff;
     padding-left: 10px;

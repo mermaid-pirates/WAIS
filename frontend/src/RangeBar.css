@@ -18,8 +18,12 @@
 }
 
 .progress-bar-container button .token {
-    font-size: 25px;
     width: 80%; height: 80%;
+}
+
+.progress-bar-container button .token img {
+    display: block;
+    margin: 0 auto;
 }
 
 .progress-bar-container .progress-bar {

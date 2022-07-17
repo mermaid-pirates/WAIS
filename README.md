@@ -1,4 +1,4 @@
-# 🌟 𝑾𝑨𝑰𝑺
+# <img src="https://user-images.githubusercontent.com/57888020/179347320-0a4cd097-31f0-4460-92c0-29d7d566976c.png" width="3%" height="3%" > 𝑾𝑨𝑰𝑺
 
 > WAIS(Web Accessibility Improvment Service)는 모든 사람이 공평하게 웹을 이용할 수 있도록 돕는, 저시력 시각 장애인을 위한 웹 접근성 개선 서비스입니다.
 

@@ -10,8 +10,6 @@ spec:
       image: kelseyhightower/nginx-react
       args:
         - "-http=0.0.0.0:80"
-        - "-health=0.0.0.0:81"
-        - "-secret=secret"
       ports:
         - name: http
           containerPort: 80

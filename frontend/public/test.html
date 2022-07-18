@@ -1,272 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html><head>
+  <title>Example Domain</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+  body {
+      background-color: #f0f0f2;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;   
+  }
+  div {
+      display: inline-block;
+      width: 600px;
+      margin: 5em auto;
+      padding: 2em;
+      background-color: #fdfdff;
+      border-radius: 0.5em;
+      box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+  }
+  a:link, a:visited {
+      color: #38488f;
+      text-decoration: none;
+  }
+  @media (max-width: 700px) {
+      div {
+          margin: 0 auto;
+          width: auto;
+      }
+  }
+  </style>    
 </head>
+
 <body>
-    <div class="wrap" id="wrapper">
-        <header class="header">
-            <div class="inner">
-                <h1><a href="/">OIDC</a></h1>
-                <!--Dev: 220208 모바일 메뉴 버튼 추가-->
-                <button type="button" class="btn_nav" aria-label="mobile menu button">
-                    <i class="ic_nav"></i>
-                </button>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="https://www.oidc.co.kr/home/about">대회소개</a>
-                        </li>
-                        <li>
-                            <a href="https://www.oidc.co.kr/home/schedule">일정</a>
-                        </li>
-                        <li>
-                            <a href="https://www.oidc.co.kr/home/register/expired">신청 및 확인</a>
-                        </li>
-                        <li>
-                            <a href="https://www.oidc.co.kr/home/board/notice">공지사항</a>
-                        </li>
-                        <li>
-                            <a href="https://www.oidc.co.kr/home/board/qna">Q&amp;A</a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="prev_evt">
-                    <a href="https://www.oidc.co.kr/home/last" class="btn basic h_m w_l">지난 행사 보기<i class="ic ic_more"></i><!--Dev: 220208 ic 클래스 수정--></a>
-                </div>
-            </div>
-        </header>
-        <div id="container">
-            
-    
-    
-    <div class="content index">
-        <section class="main_visual_sec">
-            <div class="img_area taC">
-                <img src="/img/txt_main.png" alt="제 4회 오픈 인프라 개발 경진대회">
-            </div>
-        </section>
-        <section class="main_topic_sec">
-            <div class="set_inner">
-                <div class="cnt_ttl">
-                    <p class="sub_ttl f_l">TOPICS</p>
-                    <h3 class="ttl">대회 과제</h3>
-                </div>
-                <div class="dl_type_info">
-                    <dl>
-                        <div>
-                            <dt class="f_ttl m">지정 주제</dt>
-                            <dd class="topic f_ttl">클라우드 기반 기술 관련 개발 과제 <br>(IaaS, PaaS related)</dd>
-                            <dd class="desc f_l">
-                                <span>Openstack, Kubernetes 등 관련 모니터링 혹은 기능 개선</span>
-                                <span>PaaS 관련 서비스 구성, 구축 혹은 개선</span>
-                                <span>IaaS 관련 모니터링, 관제, 서비스 운영 등</span>
-                            </dd>
-                        </div>
-                        <div>
-                            <dt class="f_ttl m">자유 주제</dt>
-                            <dd class="topic f_ttl">클라우드 기반 서비스 개발 과제 <br>(SaaS)</dd>
-                            <dd class="desc f_l">
-                                <span>IaaS 또는 PaaS를 활용한 SaaS 개발</span>
-                                <span>기존의 인터넷, 모바일 서비스를 클라우드 환경에서 구현</span>
-                            </dd>
-                        </div>
-                    </dl>
-                </div>
-            </div>
-        </section>
-        <section class="main_schedule_sec">
-            <div class="set_inner wider">
-                <div class="cnt_ttl">
-                    <p class="sub_ttl f_l">SCHEDULE</p>
-                    <h3 class="ttl">대회 일정</h3>
-                </div>
-                <div class="timeline_wrap">
-                    <ol>
-                        <li
-                                                >
-                            <p class="date f_ttl m">4.4<span class="f_m">(월)</span> ~ 5.9<span class="f_m">(월)</span></p>
-                            <div class="schedule">
-                                <p class="ttl f_ttl xs">참가신청</p>
-                                <p class="cnt f_m">참가신청 및 <br>개발 계획서 제출</p>
-                            </div>
-                        </li>
-                        <li
-                                                >
-                            <p class="date f_ttl m">5.17<span class="f_m">(화)</span></p>
-                            <div class="schedule">
-                                <p class="ttl f_ttl xs">서류심사 결과발표</p>
-                            </div>
-                        </li>
-                        <li
-                                                >
-                            <p class="date f_ttl m">5.21<span class="f_m">(토)</span></p>
-                            <div class="schedule">
-                                <p class="ttl f_ttl xs">오리엔테이션</p>
-                                <p class="cnt f_m">개발 계획 발표</p>
-                            </div>
-                        </li>
-                        <li
-                            class="is_active"                    >
-                            <p class="date f_ttl m">7.13<span class="f_m">(수)</span></p>
-                            <div class="schedule">
-                                <p class="ttl f_ttl xs">워크샵</p>
-                                <p class="cnt f_m">개발 진행 상황 공유</p>
-                            </div>
-                        </li>
-                        <li
-                                                >
-                            <p class="date f_ttl m">8.10<span class="f_m">(수)</span></p>
-                            <div class="schedule">
-                                <p class="ttl f_ttl xs">과제 제출</p>
-                                <p class="cnt f_m">실행 프로그램, <br>개발 결과 요약서 및 <br>데모 동영상 제출</p>
-                            </div>
-                        </li>
-                        <li
-                                                >
-                            <p class="date f_ttl m">8.19<span class="f_m">(금)</span></p>
-                            <div class="schedule">
-                                <p class="ttl f_ttl xs">결선 진출팀 발표</p>
-                            </div>
-                        </li>
-                        <li
-                                                >
-                            <p class="date f_ttl m">8.24<span class="f_m">(수)</span></p>
-                            <div class="schedule">
-                                <p class="ttl f_ttl xs">결선 및 시상식</p>
-                                <p class="cnt f_m">개발 결과 발표 및 <br>데모 진행</p>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-                <div class="btn_area apply">
-                    <a href="https://www.oidc.co.kr/home/register/expired" class="btn_apply">THE 4th OIDC 참가 신청하기</a>
-                </div>
-            </div>
-        </section>
-        <section class="main_awards_sec taC">
-            <div class="set_inner">
-                <div class="cnt_ttl no_mb">
-                    <p class="sub_ttl f_l">AWARDS</p>
-                    <h3 class="ttl">시상 내역</h3>
-                </div>
-                <div class="info_in_block">
-                    <div class="txt_label_wrap">
-                        <div class="txt_label">총 상금 1,500만원</div>
-                    </div>
-                    <div class="block_group">
-                        <p class="ttl f_ttl xs">지정 주제</p>
-                        <ul>
-                            <li class="block_item">
-                                <div class="block_inner">
-                                    <p class="block_ttl f_ttl m">대상<span class="f_m">(1팀)</span></p>
-                                    <p class="block_cnt f_l">500만원 및 상장</p>
-                                </div>
-                            </li>
-                            <li class="block_item">
-                                <div class="block_inner">
-                                    <p class="block_ttl f_ttl m">금상<span class="f_m">(1팀)</span></p>
-                                    <p class="block_cnt f_l">300만원 및 상장</p>
-                                </div>
-                            </li>
-                            <li class="block_item">
-                                <div class="block_inner">
-                                    <p class="block_ttl f_ttl m">은상<span class="f_m">(1팀)</span></p>
-                                    <p class="block_cnt f_l">100만원 및 상장</p>
-                                </div>
-                            </li>
-                            <li class="block_item">
-                                <div class="block_inner">
-                                    <p class="block_ttl f_ttl m">동상<span class="f_m">(2팀)</span></p>
-                                    <p class="block_cnt f_l">50만원 및 상장</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="block_group">
-                        <p class="ttl f_ttl xs">자유 주제</p>
-                        <ul>
-                            <li class="block_item">
-                                <div class="block_inner">
-                                    <p class="block_ttl f_ttl m">최우수상<span class="f_m">(1팀)</span></p>
-                                    <p class="block_cnt f_l">300만원 및 상장</p>
-                                </div>
-                            </li>
-                            <li class="block_item">
-                                <div class="block_inner">
-                                    <p class="block_ttl f_ttl m">우수상<span class="f_m">(1팀)</span></p>
-                                    <p class="block_cnt f_l">100만원 및 상장</p>
-                                </div>
-                            </li>
-                            <li class="block_item">
-                                <div class="block_inner">
-                                    <p class="block_ttl f_ttl m">장려상<span class="f_m">(2팀)</span></p>
-                                    <p class="block_cnt f_l">50만원 및 상장</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="block_group">
-                        <p class="ttl f_ttl xs">특별상</p>
-                        <ul>
-                            <li class="block_item">
-                                <div class="block_inner">
-                                    <p class="block_ttl f_ttl m">네이버 클라우드 베스트 후기상</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="info_list_wrap">
-                    <ul>
-                        <li class="f_s">제세공과금 본인 부담</li>
-                        <li class="f_s">수상자 및 우수개발자에 기업 인턴 참여 기회 제공</li>
-                        <li class="f_s">심사 결과에 따라 수상 인원 및 상금이 변경 될 수 있으며, 결과물 수준이 심사기준에 적합하지 않을 경우 시상하지 않을 수 있음</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-        </div>
-    
-        <footer class="footer">
-    
-            <div class="logos_wrap">
-                <div class="set_inner">
-                    <div class="logos_box host">
-                        <ul>
-                            <li class="set_fsz">
-                                <p class="f_bold">주최&amp;주관</p>
-                                <span><img src="/img/logo_mantech.png" alt="Mantech"></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="logos_box sponsor">
-                        <ul>
-                            <li class="set_fsz">
-                                <p class="f_bold">후원</p>
-                                <span><img src="/img/logo_naver.png" alt="Naver Cloud Platform"></span>
-                            </li>
-                            <li class="set_fsz"><p>오픈플랫폼개발자커뮤니티</p></li>
-                            <li class="set_fsz"><p>오픈소스소프트웨어재단</p></li>
-                            <li class="set_fsz"><p>(사)한국클라우드산업협회</p></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="contact_wrap">
-                <div class="set_inner">
-                    <dl>
-                        <dt class="f_bold">문의사항</dt>
-                        <dd><a href="mailto:oidc@mantech.co.kr">oidc@mantech.co.kr</a></dd>
-                    </dl>
-                </div>
-            </div>
-        </footer>
-    </div>
-</body>
-</html>
+
+<div style="background-color: #00ff00; width: 50; height: 50;">
+  <h1 style="color: #ff0000">1</h1>
+</div>
+<div style="background-color: #0000ff; width: 50; height: 50;">
+  <h1 style="color: #ffff00">2</h1>
+</div>
+<div style="background-color: #d900ff; width: 50; height: 50;">
+  <h1 style="color: #00ff88">3</h1>
+</div>
+<div style="background-color: #ff0044; width: 50; height: 50;">
+  <h1 style="color: #00ddff">4</h1>
+</div>
+<div style="background-color: #ffff00; width: 50; height: 50;">
+  <h1 style="color: #0000ff">5</h1>
+</div>
+<div style="background-color: #00ff88; width: 50; height: 50;">
+  <h1 style="color: #d900ff">6</h1>
+</div>
+<div style="background-color: #00ddff; width: 50; height: 50;">
+  <h1 style="color: #ff0044">7</h1>
+</div>
+<div style="background-color: #ff0000; width: 50; height: 50;">
+  <h1 style="color: #00ff00">8</h1>
+</div>
+</body></html>

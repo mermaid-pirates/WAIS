@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-react
+  labels:
+    app: nginx-react
+spec:
+  containers:
+    - name: nginx-react
+      image: kelseyhightower/nginx-react
+      args:
+        - "-http=0.0.0.0:80"
+      ports:
+        - name: http
+          containerPort: 80
+      resources:
+        limits:
+          cpu: 0.2
+          memory: "10Mi"

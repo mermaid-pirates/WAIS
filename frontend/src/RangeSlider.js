@@ -2,24 +2,25 @@ import { useState, useRef } from "react";
 import './RangeBar.css';
 
 function RangeSlider(props){
-    let [gage, setGage] = useState(50);
+    let [gage, setGage] = useState(100);
     const bar = useRef();
 
-    const upRange = (e)=>{
-        if(gage<100){
-            props.e(e, props.api_id);
-            setGage(++gage);
-            bar.current.style.width = gage+"%";
+    const upRange = ()=>{
+        if(gage<200){
+            bar.current.style.width = (gage-90) +"%";
+            setGage(gage+10);
+            props.e([...props.api, gage+10]);
         } else {
             bar.current.style.width = "100%";
         }
     };
 
-    const downRange = (e)=>{
-        if(gage>0){
-            props.e(e, props.api_id);
-            setGage(--gage);
-            bar.current.style.width = gage+"%";
+    const downRange = ()=>{
+        if(gage>100){
+            bar.current.style.width = (gage-110) +"%";
+            setGage(gage-10);
+            props.e([...props.api, gage-10]);
+            
         } else {
             bar.current.style.width = "0%";
         }
@@ -29,12 +30,12 @@ function RangeSlider(props){
         <div className="range-slider-box">
             <h3 className="label">{props.label}</h3>
             <div className="progress-bar-container">
-                <button onClick={downRange}><span className="token">-</span></button>
+                <button onClick={downRange}><span className="token"><img src="./minus.png" alt="글자축소"></img></span></button>
                 <div className="progress-bar">
                     <div className="gage" ref={bar}></div>
                     <span className="g_percent">{gage}%</span>
                 </div>
-                <button onClick={upRange}><span className="token">+</span></button>
+                <button onClick={upRange}><span className="token"><img src="./plus.png" alt="글자확대"></img></span></button>
             </div>
         </div>
     )

@@ -22,7 +22,7 @@ function RenderPage(props){
     })
 
     return (
-        <div className="rendered-page" style={props.requestStyle}>
+        <div className="rendered-page">
             <div id="body" ref={page_ref}></div>
         </div>
     );

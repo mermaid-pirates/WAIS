@@ -1,8 +1,8 @@
 import './ToggleSwitch.css'
 
 function ToggleSwitch(props){
-    const toggle_e = (e)=>{
-        props.e(e, props.api_id);
+    const toggle_e = ()=>{
+        props.e(props.api);
     }
 
     return (

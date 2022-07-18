@@ -10,7 +10,7 @@ router.get('/', async function(req, res) {
         const result = await axios.get(url, {
             headers: {...req.headers}
         });
-        res.send(result.data);
+        res.end(result.data);
     } catch (e) {
         console.error(e);
     }

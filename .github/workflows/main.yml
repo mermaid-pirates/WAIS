@@ -24,6 +24,6 @@ jobs:
       - run: tree
       - run: git remote add old https://github.com/mermaid-pirates/WAIS.git
       - run: git fetch --unshallow old
-      - run: git push https://github.com/mermaid-pirates/mermaid-backend.git `git subtree split --prefix backend master` --force
-      - run: git push https://github.com/mermaid-pirates/mermaid-frontend.git `git subtree split --prefix frontend master` --force
+      - run: git push https://github.com/mermaid-pirates/mermaid-backend.git `git subtree split --prefix backend main` --force
+      - run: git push https://github.com/mermaid-pirates/mermaid-frontend.git `git subtree split --prefix frontend main` --force
       

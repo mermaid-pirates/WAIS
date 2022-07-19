@@ -21,9 +21,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.TOKEN }}
-      - run: tree
       - run: git remote add old https://github.com/mermaid-pirates/WAIS.git
       - run: git fetch --unshallow old
+      - run: tree
+      - run: git branch -a
       - run: git push https://github.com/mermaid-pirates/mermaid-backend.git `git subtree split --prefix backend old/main` --force
       - run: git push https://github.com/mermaid-pirates/mermaid-frontend.git `git subtree split --prefix frontend old/main` --force
       

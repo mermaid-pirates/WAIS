@@ -33,4 +33,3 @@ jobs:
       - run: git branch -D main
       - run: git branch -m main
       - run: git push https://github.com/mermaid-pirates/mermaid-frontend.git main --force
-      - run: git branch -D main

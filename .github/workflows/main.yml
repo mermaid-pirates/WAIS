@@ -22,8 +22,8 @@ jobs:
         with:
           token: ${{ secrets.TOKEN }}
       - run: tree
-      - run: git push https://github.com/mermaid-pirates/mermaid-backend.git `git subtree split --prefix backend -b tmp`--force
+      - run: git push https://github.com/mermaid-pirates/mermaid-backend.git `git subtree split --prefix backend -b tmp` --force
       - run: git branch -D tmp
-      - run: git push https://github.com/mermaid-pirates/mermaid-frontend.git `git subtree split --prefix frontend master`--force
+      - run: git push https://github.com/mermaid-pirates/mermaid-frontend.git `git subtree split --prefix frontend master` --force
       - run: git branch -D tmp
       

@@ -1,7 +1,10 @@
 import ToggleSwitch from './ToggleSwitch';
 import RangeSlider from './RangeSlider';
+import { useState } from 'react';
 
 function ToolBar(props){
+    const [select, setSelect] = useState(-1);
+
     const toggles_list = [
         {label: "원본페이지보기", api: props.api.origin},
         {label: "다크모드", api: props.api.dark},
@@ -14,11 +17,25 @@ function ToolBar(props){
     ]
 
     const toggles = toggles_list.map((el, idx)=>{
-        return <ToggleSwitch key={idx} label={el.label} e={props.e} api={el.api}/>; 
+        const checked = idx === select ? true : false;
+        return <ToggleSwitch 
+            key={idx}
+            label={el.label}
+            e={props.e}
+            api={el.api}
+            radio_id = {idx}
+            select={setSelect}
+            checked={checked}
+        />; 
     })
 
     const ranges = ranges_list.map((el, idx)=>{
-        return <RangeSlider key={idx} label={el.label} e={props.e} api={el.api}/>;
+        return <RangeSlider 
+            key={idx}
+            label={el.label}
+            e={props.e}
+            api={el.api}
+        />;
     })
 
 

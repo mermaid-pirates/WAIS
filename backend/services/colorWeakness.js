@@ -1,4 +1,4 @@
-const color_converter = require('./getColor');
+const weak_color = require('./getColor');
 
 const getStyle = () => {
     const style = [];
@@ -20,7 +20,7 @@ const getRenderedHtml = (html_data) => {
     if(pattern.test(html_data)) {
         const target_list = [...new Set(html_data.match(pattern))];
         for(const target of target_list) {
-            html_data = html_data.replace(new RegExp(target, 'gi'), color_converter.getColor(target));
+            html_data = html_data.replace(new RegExp(target, 'gi'), weak_color.getColor(target));
         }
     }
     return html_data;

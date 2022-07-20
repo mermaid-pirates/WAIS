@@ -33,20 +33,8 @@
 </head>
 
 <body>
-
-    <div style="background-color:#123456">
-        <h1 style="color:#005caf;">Custom Example Domain</h1>
-        <p>This domain is for use in illustrative examples in documents. You may use this
-        domain in literature without prior coordination or asking for permission.</p>
-        <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+    <div style="background-color:#364e8e">
+        <h1 style="color:#f0e542; text-align: center;">URL이 없어요!</h1>
+        <p><a href="https://github.com/mermaid-pirates/WAIS/wiki">More information...</a></p>
     </div>
-    <div style="background-color:#247833;">
-        <h1 style="color:#5caf00;">Custom Example Domain</h1>
-        <p>This domain is for use in illustrative examples in documents. You may use this
-        domain in literature without prior coordination or asking for permission.</p>
-        <p><a href="https://www.iana.org/domains/example">More information...</a></p>
-    </div>
-
-<p><input type="text" placeholder="사용 불가 텍스트"></p>
-
 </body></html>

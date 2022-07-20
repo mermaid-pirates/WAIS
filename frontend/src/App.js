@@ -15,8 +15,8 @@ const api = {
 
 function App() {
   const [renderHTML, setHTML] = useState("");
-  const requestAPI = async (api_event)=>{ 
-    const res = request_style(request_url, renderHTML, api_event);
+  const requestAPI = async (api_event, current_url)=>{
+    const res = request_style(request_url, renderHTML, api_event, current_url);
     res.then((res)=>{
       return res.text();
     })
@@ -50,6 +50,16 @@ function App() {
       </div>
     </div>
   );
+}
+
+window.onload = ()=> {
+  window.addEventListener("mouseover", (e)=>{
+    e.target.style.border = "3px solid orange";
+  })
+
+  window.addEventListener("mouseout", (e)=>{
+    e.target.style.border = "";
+  })
 }
 
 export default App;

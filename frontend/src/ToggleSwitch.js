@@ -6,7 +6,9 @@ function ToggleSwitch(props){
 
     const toggle_e = (e)=>{
         if(btnRef.current.checked){
-            props.e(props.api);
+            const search = new URL(window.location).searchParams.get('search');
+            console.log(search);
+            props.e(props.api, search);
             props.select(props.radio_id);
         }
         

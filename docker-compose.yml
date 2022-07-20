@@ -1,15 +1,13 @@
 version: '0.1'
- 
+# 이건 잘 안됨.
 services:
   web:
-    image: nginx:latest # nginx 이미지
-    container_name: web # 컨테이너 명
-    restart: "on-failure" # 구동 실패 시 재시작
+    build: # Dockerfile 빌드
+      context: ./frontend # Dockerfile 빌드 경로
+    container_name: frontend # 컨테이너 명
+    restart: "on-failure"
     ports:
       - 80:80
-    volumes: # 볼륨 설정
-      - ./infra/nginx.conf:/etc/nginx/nginx.conf
-      - ./frontend/build:/usr/share/nginx/html
  
   server:
     build: # Dockerfile 빌드

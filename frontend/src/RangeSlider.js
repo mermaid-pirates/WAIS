@@ -20,7 +20,6 @@ function RangeSlider(props){
             bar.current.style.width = (gage-110) +"%";
             setGage(gage-10);
             props.e([...props.api, gage-10]);
-            
         } else {
             bar.current.style.width = "0%";
         }

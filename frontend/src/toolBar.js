@@ -6,7 +6,7 @@ function ToolBar(props){
     const [select, setSelect] = useState(-1);
 
     const toggles_list = [
-        {label: "원본페이지보기", api: props.api.origin},
+        {label: "원본모드", api: props.api.origin},
         {label: "다크모드", api: props.api.dark},
         {label: "색맹모드", api: props.api.color_weakness},
         {label: "고대비모드", api: props.api.high_contrast}

@@ -1,7 +1,16 @@
+
+/* Customize the label (the container) */
 .toggle-sw-box {
+    display: block;
     position: relative;
-    width: 250px; height: 100%;
-    margin: 20px 0;
+    width: 150px; height: 100%;
+    margin: 20px 10px 20px 30px;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .label {
@@ -9,66 +18,59 @@
     text-align: center;
     color: #333;
     padding: 10px;
+    font-size: 1.3em;
 }
 
-.switch {
+  /* Hide the browser's default checkbox */
+.toggle-sw-box input {
     position: absolute;
-    right: 20px;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-  /* Hide default HTML checkbox */
-.switch input {
     opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* The slider */
-.slider {
-    position: absolute;
     cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .toggle-sw-box:hover input ~ .checkmark {
     background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .toggle-sw-box input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked + .slider {
-    background-color: #6BCB77;
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #6BCB77;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .toggle-sw-box input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .toggle-sw-box .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

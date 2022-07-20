@@ -13,20 +13,54 @@ const api = {
   text_sizing: ['text', 'text_size']
 };
 
+const overEvent = (e)=>{
+  e.target.style.borderRadius = '8px';
+  e.target.style.boxShadow = "0.5px 0.5px 10px 5px orange";
+}
+
+const outEvent = (e)=>{
+  e.target.style.borderRadius = '';
+  e.target.style.boxShadow = "";
+}
+
 function App() {
+  const [textSize, setTextSize] = useState(100);
   const [renderHTML, setHTML] = useState("");
+
   const requestAPI = async (api_event, current_url)=>{
+    if(api_event[2]){
+      setTextSize(api_event[2]);
+    }
+
     const res = request_style(request_url, renderHTML, api_event, current_url);
     res.then((res)=>{
       return res.text();
     })
       .then((html)=>{
-        setHTML(html)
+        if(api_event[1] === 'original') {
+          request_style(request_url, html, [...api.text_sizing, textSize]).then((res2)=>{
+            return res2.text();
+          }).then((html2)=>{
+            setHTML(html2);
+          })
+        } else {
+          setHTML(html);
+        }
       })
   }
 
+  const focusTarget = (e) => {
+    if(e.target.checked) {
+      window.addEventListener("mouseover", overEvent)
+      window.addEventListener("mouseout", outEvent)
+    } else {
+      window.removeEventListener("mouseover", overEvent);
+      window.addEventListener("mouseout", outEvent);
+    }
+  }
+
   const render_page = <RenderPage server={request_url} render={setHTML} body={renderHTML}/>
-  const tool_maneger = <ToolBar e={requestAPI} api={api}/>;
+  const tool_maneger = <ToolBar e={requestAPI} api={api} />;
 
   return (
     <div className="App-madebymermaid">
@@ -39,6 +73,12 @@ function App() {
           <input type="url" name="search" placeholder="Enter the Site..."></input>
           <input type="submit" value="search"></input>
         </form>
+
+        <label className="toggle-focus-effect">
+          <label style={{"visibility": "hidden", "position":"absolute"}}>마우스포커싱</label>
+          <input type="checkbox" onClick={focusTarget} />
+          <span className="slider round"></span>
+        </label>
         
         <div tabIndex={0} id="tool-box">
           {tool_maneger}
@@ -50,18 +90,6 @@ function App() {
       </div>
     </div>
   );
-}
-
-window.onload = ()=> {
-  window.addEventListener("mouseover", (e)=>{
-    e.target.style.borderRadius = '8px';
-    e.target.style.boxShadow = "0.5px 0.5px 10px 5px orange";
-  })
-
-  window.addEventListener("mouseout", (e)=>{
-    e.target.style.borderRadius = '';
-    e.target.style.boxShadow = "";
-  })
 }
 
 export default App;

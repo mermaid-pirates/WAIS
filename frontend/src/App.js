@@ -54,11 +54,13 @@ function App() {
 
 window.onload = ()=> {
   window.addEventListener("mouseover", (e)=>{
-    e.target.style.border = "3px solid orange";
+    e.target.style.borderRadius = '8px';
+    e.target.style.boxShadow = "0.5px 0.5px 10px 5px orange";
   })
 
   window.addEventListener("mouseout", (e)=>{
-    e.target.style.border = "";
+    e.target.style.borderRadius = '';
+    e.target.style.boxShadow = "";
   })
 }
 

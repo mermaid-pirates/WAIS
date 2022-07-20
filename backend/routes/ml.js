@@ -38,7 +38,7 @@ router.get('/', async function(req, res) {
         $(tagSelector).each((i, elem) => {
             const title = $(elem).attr('src');
             // TODO img 태그 중 다운받아야 하는 태그만 필터링 해야됨.
-            if(title&&title[0]=='h'){
+            if(title&&title[0]=='h'&&title.at(-1)=='g'){
                 downloadImage(title.replace(/\?.*$/, ''));
             }
             // TODO ml 결과값 도출

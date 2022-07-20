@@ -1,0 +1,28 @@
+version: '0.1'
+ 
+services:
+  web:
+    image: nginx:latest # nginx 이미지
+    container_name: web # 컨테이너 명
+    restart: "on-failure" # 구동 실패 시 재시작
+    ports:
+      - 80:80
+    volumes: # 볼륨 설정
+      - ./infra/nginx.conf:/etc/nginx/nginx.conf
+      - ./frontend/build:/usr/share/nginx/html
+ 
+  server:
+    build: # Dockerfile 빌드
+      context: ./backend # Dockerfile 빌드 경로
+    container_name: backend # 컨테이너 명
+    restart: "on-failure"
+    expose:
+      - 4000 # 도커 내부적 포트
+    volumes: # 볼륨 설정
+      - './backend:/app'
+      - '/app/node_modules'
+    environment: # 환경변수 설정
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true

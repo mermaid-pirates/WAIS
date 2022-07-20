@@ -24,8 +24,14 @@ function ToolBar(props){
 
     return(
         <div className="tool-bar">
-            {toggles}
-            {ranges}
+            <div className='burger'>
+                <img src='./burger.png' alt='도움메뉴'></img>
+            </div>
+            <div className='burger-list'>
+                {toggles}
+                {ranges}
+            </div>
+            
         </div>
     )
 }

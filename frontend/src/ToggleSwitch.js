@@ -9,6 +9,7 @@ function ToggleSwitch(props){
         <div className="toggle-sw-box">
             <h3 className='label'>{props.label}</h3>
             <label className="switch">
+                <label style={{"visibility": "hidden"}}>{props.label}</label>
                 <input type="checkbox" onClick={toggle_e}/>
                 <span className="slider round"></span>
             </label>

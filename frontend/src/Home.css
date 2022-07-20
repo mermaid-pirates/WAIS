@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@600&display=swap');
 
 * {
   margin: 0; padding: 0;
@@ -6,54 +7,37 @@
   font-family: 'Nanum Gothic', sans-serif;
 }
 
-.back-color {
-  position:absolute;
-  top: 0; left: 0;
-  z-index: -2;
-  width: 100vw; height: 100vh;
-  background-color:#270082;
-}
-
-/* setting 버튼 */
-.setting {
-  position: absolute;
-  right: 15px; bottom: 15px;
-  cursor: pointer;
-}
-
-.setting .setting_title {
-  color: #eee;
-}
-
 .main_page {
-  width: 1000px; height: 100vh;
-  margin: 0 auto;
-}
-
-/* 메인페이지 헤더부분 */
-.main_page .header::before {
-  display: block;
-  content: '';
-  width: 100vw; height: 70px;
-  background-color: #eee;
-  position: absolute; top: 0; left: 0;
-  z-index: -1;
+  width: 100%; height: 100vh;
+  overflow: hidden;
+  background-color: #fff;
 }
 
 .main_page .header {
   width: 100%; height: 70px;
+  background-color: #fff;
+  padding: 0 100px;
+  position: fixed;
+  top: 0; z-index: 9999;
+  clear: both;
 }
 
 .main_page .header .logo {
   clear: both;
   line-height: 70px;
-  color: #000;
+  color: #333;
   text-decoration: none;
   cursor: pointer;
 }
+
+.main_page .header .logo:hover {
+  color: #000;
+}
+
 .main_page .header .logo .title{
   float: left;
   margin-right: 10px;
+  font-family: 'Edu TAS Beginner', cursive;
 }
 
 .main_page .header .logo .logo_img{
@@ -61,51 +45,101 @@
   float: left;
 }
 
+/* 메인페이지 헤더 네비바 */
+.main_page .header .nav {
+  float: right;
+  width: 400px; height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main_page .header .nav > li {
+  list-style: none;
+}
+
+.main_page .header .nav > li > a {
+  display: block;
+  width: 100px;
+  color: #555;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Edu TAS Beginner', cursive;
+  font-size: 1.3em;
+}
+
+.main_page .header .nav > li > a:hover {
+  color: #000;
+}
+
 /* 메인페이지 콘텐츠 부분 */
 .main_page .contents {
   width: 100%; height: 600px;
+  position: relative;
 }
 
-.main_page .contents .service_desc {
-  color: #ddd;
-  width: 650px; height: 80px;
-  line-height: 80px;
-  margin: 50px auto;
+.main_page .contents .introduce {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
-.main_page .contents .service_desc .desc_what {
-  font-size: 1.8em;
+.main_page .contents .introduce h2 {
+  font-size: 2.5em;
+  font-family: 'Edu TAS Beginner', cursive;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255);
+}
+
+.main_page .contents .introduce p {
+  font-size: 1.2em;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+  text-align: center;
   font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 10px;
 }
 
-.main_page .contents .service_desc .desc_for {
-  font-size: 1.0em;
-}
-
-.main_page .contents .service_form {
+.main_page .contents .introduce .service_form {
   text-align: center;
   padding: 50px;
 }
-.main_page .contents .service_form input[type="url"]{
+.service_form input[type="url"]{
+  font-family: 'Edu TAS Beginner', cursive;
   padding: 5px;
   font-size: 2em;
   margin-right: 10px;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
-.main_page .contents .service_form input[type="submit"]{
+.service_form input[type="submit"]{
+  font-family: 'Edu TAS Beginner', cursive;
   padding: 5px 15px;
   font-size: 2em;
-  border-radius: 5px;
-  background-color: #6BCB77; color: #eee;
+  border-radius: 15px;
+  background-color: #333; color: #eee;
   border: none;
+  cursor: pointer;
+  border: 0.5px solid rgba(255,255,255,0.3);
+  box-shadow: 5px 5px 15px rgba(255,255,255,0.3);
 }
 
 /* 메인페이지 푸터 부분 */
 .main_page .footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
+  height: 70px;
 }
 
 .main_page .footer .copyright {
-  color: #eee; text-align: center;
+  color: #333; text-align: center;
+  line-height: 70px;
+  font-weight: bold;
 }

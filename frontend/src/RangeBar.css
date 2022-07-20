@@ -1,10 +1,12 @@
 
 .range-slider-box {
-    margin: 20px 10px;
+    margin: 20px 0;
+    display: flex;
 }
 
 .progress-bar-container {
-    margin: 10px 10px;
+    margin: 10px 0;
+    float: right;
 }
 
 .progress-bar-container button {
@@ -47,9 +49,9 @@
 }
 
 .progress-bar-container .progress-bar .g_percent{
-    color: #eee;
+    color: #333;
     position: absolute;
-    right: -40px; bottom: 35px;
+    right: -120px; bottom: 0;
     font-weight: bold;
     text-align: center;
     font-size: 1.2em;

@@ -10,6 +10,7 @@
     "@tensorflow/tfjs": "^3.18.0",
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
+    "color-convert": "^2.0.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",

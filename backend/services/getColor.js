@@ -1,3 +1,5 @@
+var convert = require('color-convert');
+
 const ColorTable = {
     BLACK: "#000000",
     GRAY: "#999999",
@@ -13,6 +15,7 @@ const ColorTable = {
 
 const getColor = (targetColor) => {
     const target_color_vector = colorToVector(targetColor);
+    const target_lightness = convert.hex.hsl(targetColor.substr(1))[2];
     let color = null;
     let min_distance = getDistanceOfVector([0, 0, 0], [255, 255, 255]);
     Object.keys(ColorTable).forEach(key => {
@@ -22,6 +25,9 @@ const getColor = (targetColor) => {
             color = ColorTable[key];
         }
     });
+    const hsl = convert.hex.hsl(color.substr(1));
+    hsl[2] = target_lightness;
+    color = '#'+convert.hsl.hex(hsl);
     return color;
 };
 

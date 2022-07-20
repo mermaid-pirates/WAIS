@@ -4,8 +4,9 @@ const fs = require('fs');
 const dark = require('../services/dark');
 const weak = require('../services/colorWeakness');
 const cont = require('../services/highContrast');
-const CSSadder = require('../services/addStyleSheet');
+const css_manager = require('../services/manageStyleSheet');
 const example_html_data = fs.readFileSync('data/sampleHTML', 'utf8');
+const no_url_html_data = fs.readFileSync('data/noUrlHTML', 'utf-8');
 
 // TODO: 색상 변경 모드 API
 
@@ -18,11 +19,13 @@ router.get('/color-test', (req, res) => {
 });
 
 router.post('/color', (req, res) => {
+    const url = req.body.url;
     const style_name = req.body.style_change;
-    let html_data = req.body.html_data || example_html_data;
+    let html_data = req.body.html_data || no_url_html_data;
     let style = '';
     switch(style_name) {
         case 'original':
+            if(url != undefined) { res.redirect('/?url='+url); }
             break;
         case 'dark':
             style = dark.getStyle();
@@ -34,8 +37,9 @@ router.post('/color', (req, res) => {
         case 'high_contrast':
             style = cont.getStyle();
             break;
-    }            
-    const result = CSSadder.setStyle(html_data, style, style_name);            
+    }
+    html_data = css_manager.delStyle(html_data, 'color');
+    const result = css_manager.addStyle(html_data, style, 'color '+style_name);            
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
     res.end(result);
 });
@@ -46,7 +50,7 @@ router.post('/text', (req, res) => {
     const text_size = req.body.text_size;
     const html_data = req.body.html_data || example_html_data;
     const style = `#body { font-size: ${parseInt(text_size)}% !important; }`;
-    const result = CSSadder.setStyle(html_data, style, style_name);
+    const result = css_manager.addStyle(html_data, style, 'text '+style_name);
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
     res.end(result);
 });

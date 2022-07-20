@@ -9,6 +9,8 @@ html
             #container
                 h1 스타일 적용 테스트 화면
                 form(action='/style/color' method='post')
+                    p
+                        input(type='url' name='url')
                     label
                         input(type='radio' name='style_change' value='original')
                         | Original

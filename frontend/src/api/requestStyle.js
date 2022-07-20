@@ -1,4 +1,4 @@
-export default function request_style(request, html, style){
+export default function request_style(request, html, style, current_url){
     // style = [
     //     mode: 'color/text',
     //     detail: ''
@@ -14,7 +14,8 @@ export default function request_style(request, html, style){
         body: JSON.stringify({
             html_data: html,
             style_change: detail,
-            text_size: text_size
+            text_size: text_size,
+            url: current_url
         })
     })
 

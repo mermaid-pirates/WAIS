@@ -18,8 +18,9 @@ function RenderPage(props){
         xml.open('GET', `${props.server}?url=${query_url}`, true);
         xml.send();
     })
-    const model = mobilenet.load();
+    let model;
     const ml = async (img) =>{
+        model = await mobilenet.load();
         const predictions = await model.classify(img);
         console.log('Predictions: ');
         console.log(predictions);
@@ -29,10 +30,11 @@ function RenderPage(props){
         const page= page_ref.current;
         const imgs = page.querySelectorAll('img');
         console.log(imgs)
-        for(var img in imgs) {
-            console.log(img);
-            ml(img);
-        }
+        Array.from(imgs).forEach((element)=>{
+            //console.log(element);
+            element.setAttribute('crossorigin','anonymous');
+            ml(element);
+        })
     })
 
     return (

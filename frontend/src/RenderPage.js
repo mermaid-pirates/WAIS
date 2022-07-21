@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import getQueryStringObject from "./help/getQuery";
+import * as mobilenet from '@tensorflow-models/mobilenet';
+import * as tf from '@tensorflow/tfjs';
 
 
 function RenderPage(props){
@@ -16,9 +18,21 @@ function RenderPage(props){
         xml.open('GET', `${props.server}?url=${query_url}`, true);
         xml.send();
     })
-
+    const model = mobilenet.load();
+    const ml = async (img) =>{
+        const predictions = await model.classify(img);
+        console.log('Predictions: ');
+        console.log(predictions);
+    }
     useEffect(()=>{
         page_ref.current.innerHTML = props.body;
+        const page= page_ref.current;
+        const imgs = page.querySelectorAll('img');
+        console.log(imgs)
+        for(var img in imgs) {
+            console.log(img);
+            ml(img);
+        }
     })
 
     return (

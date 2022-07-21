@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import './ToggleSwitch.css'
 
+
+
 function ToggleSwitch(props){
     const btnRef = useRef();
 
@@ -9,9 +11,9 @@ function ToggleSwitch(props){
             const search = new URL(window.location).searchParams.get('search');
             props.e(props.api, search);
             props.select(props.radio_id);
-        }
-        
+        }   
     }
+
 
     return (
         <div className="toggle-sw-box">

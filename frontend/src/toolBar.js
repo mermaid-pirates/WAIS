@@ -1,6 +1,8 @@
 import ToggleSwitch from './ToggleSwitch';
 import RangeSlider from './RangeSlider';
 import { useState } from 'react';
+import ToggleButtons from './ToggleButtons';
+
 
 function ToolBar(props){
     const [select, setSelect] = useState(-1);
@@ -45,7 +47,7 @@ function ToolBar(props){
                 <img src='./burger.png' alt='도움메뉴'></img>
             </div>
             <div className='burger-list'>
-                {toggles}
+                <ToggleButtons e={props.e} list={toggles_list}></ToggleButtons>
                 {ranges}
             </div>
             

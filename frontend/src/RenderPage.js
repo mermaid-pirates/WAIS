@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import getQueryStringObject from "./help/getQuery";
+import * as mobilenet from '@tensorflow-models/mobilenet';
+import * as tf from '@tensorflow/tfjs';
 
 
 function RenderPage(props){
@@ -16,9 +18,27 @@ function RenderPage(props){
         xml.open('GET', `${props.server}?url=${query_url}`, true);
         xml.send();
     })
-
+    let model;
+    const ml = async (img) =>{
+        model = await mobilenet.load();
+        const predictions = await model.classify(img);
+        console.log(predictions[0].className)
+        return predictions[0].className;
+    }
     useEffect(()=>{
         page_ref.current.innerHTML = props.body;
+        const page= page_ref.current;
+        const imgs = page.querySelectorAll('img');
+        console.log(imgs)
+        Array.from(imgs).forEach((element)=>{
+            //console.log(element);
+            if(!element.hasAttribute('alt')||element.alt === ""){
+                element.setAttribute('crossorigin','anonymous');
+                ml(element).then((alt) => {
+                    element.alt = alt;
+                })
+            }
+        })
     })
 
     return (

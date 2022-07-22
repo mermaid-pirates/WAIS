@@ -8,7 +8,6 @@ const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const styleRouter = require('./routes/style');
-const mlRouter = require('./routes/ml');
 
 const PORT = 4000;
 
@@ -27,7 +26,7 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/style', styleRouter);
-app.use('/ml', mlRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

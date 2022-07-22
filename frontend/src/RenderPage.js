@@ -22,8 +22,8 @@ function RenderPage(props){
     const ml = async (img) =>{
         model = await mobilenet.load();
         const predictions = await model.classify(img);
-        console.log('Predictions: ');
-        console.log(predictions);
+        console.log(predictions[0].className)
+        return predictions[0].className;
     }
     useEffect(()=>{
         page_ref.current.innerHTML = props.body;
@@ -32,8 +32,12 @@ function RenderPage(props){
         console.log(imgs)
         Array.from(imgs).forEach((element)=>{
             //console.log(element);
-            element.setAttribute('crossorigin','anonymous');
-            ml(element);
+            if(!element.hasAttribute('alt')||element.alt === ""){
+                element.setAttribute('crossorigin','anonymous');
+                ml(element).then((alt) => {
+                    element.alt = alt;
+                })
+            }
         })
     })
 

@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import getQueryStringObject from "./help/getQuery";
 import * as mobilenet from '@tensorflow-models/mobilenet';
-import * as tf from '@tensorflow/tfjs';
 
 
 function RenderPage(props){

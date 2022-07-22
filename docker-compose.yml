@@ -1,0 +1,26 @@
+version: '0.1'
+# 이건 잘 안됨.
+services:
+  web:
+    build: # Dockerfile 빌드
+      context: ./frontend # Dockerfile 빌드 경로
+    container_name: frontend # 컨테이너 명
+    restart: "on-failure"
+    ports:
+      - 80:80
+ 
+  server:
+    build: # Dockerfile 빌드
+      context: ./backend # Dockerfile 빌드 경로
+    container_name: backend # 컨테이너 명
+    restart: "on-failure"
+    expose:
+      - 4000 # 도커 내부적 포트
+    volumes: # 볼륨 설정
+      - './backend:/app'
+      - '/app/node_modules'
+    environment: # 환경변수 설정
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true

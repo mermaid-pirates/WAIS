@@ -27,7 +27,7 @@ function RangeSlider(props){
 
     return (
         <div className="range-slider-box">
-            <h3 className="label">{props.label}</h3>
+            <h3 className="range-label">{props.label}</h3>
             <div className="progress-bar-container">
                 <button onClick={downRange}><span className="token"><img src="./minus.png" alt="글자축소"></img></span></button>
                 <div className="progress-bar">

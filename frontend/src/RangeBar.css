@@ -4,6 +4,12 @@
     display: flex;
 }
 
+.range-slider-box .range-label {
+    transform: translateY(10px);
+    margin-right: 20px;
+    color: #333 !important;
+}
+
 .progress-bar-container {
     margin: 10px 0;
     float: right;

@@ -23,30 +23,35 @@ const outEvent = (e)=>{
   e.target.style.boxShadow = "";
 }
 
+let tempOrignPage = "";
+
 function App() {
   const [textSize, setTextSize] = useState(100);
   const [renderHTML, setHTML] = useState("");
 
+  const initOriginPage = (pageHTML) => {
+    tempOrignPage = pageHTML;
+    setHTML(pageHTML);
+  }
+
   const requestAPI = async (api_event, current_url)=>{
+    let res;
     if(api_event[2]){
       setTextSize(api_event[2]);
     }
 
-    const res = request_style(request_url, renderHTML, api_event, current_url);
+    if(api_event[1] === 'original'){
+      res = request_style(request_url, tempOrignPage, [...api.text_sizing, textSize])
+    } else {
+      res = request_style(request_url, renderHTML, api_event, current_url);
+    }
+
     res.then((res)=>{
       return res.text();
     })
-      .then((html)=>{
-        if(api_event[1] === 'original') {
-          request_style(request_url, html, [...api.text_sizing, textSize]).then((res2)=>{
-            return res2.text();
-          }).then((html2)=>{
-            setHTML(html2);
-          })
-        } else {
-          setHTML(html);
-        }
-      })
+    .then((html)=>{
+      setHTML(html);
+    })
   }
 
   const focusTarget = (e) => {
@@ -59,7 +64,7 @@ function App() {
     }
   }
 
-  const render_page = <RenderPage server={request_url} render={setHTML} body={renderHTML}/>
+  const render_page = <RenderPage server={request_url} render={initOriginPage} body={renderHTML}/>
   const tool_maneger = <ToolBar e={requestAPI} api={api} />;
 
   return (

@@ -16,14 +16,9 @@ const modifyLink = (url, html) => {
 // input parameter: https://example.com/abc/def
 // return: https://example.com
 const getContextPath = (url) => {
-    let match = url.match(/https:\/\/[^\/]*/);
+    let match = url.match(/https?:\/\/[^\/]*/);
     if (match)
         return match[0];
-    
-    match = url.match(/http:\/\/[^\/]*/);
-    if (match)
-        return match[0];
-    
     return null;
 }
 

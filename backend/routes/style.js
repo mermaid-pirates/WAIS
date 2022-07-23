@@ -9,13 +9,13 @@ const example_html_data = fs.readFileSync('data/sampleHTML', 'utf8');
 const no_url_html_data = fs.readFileSync('data/noUrlHTML', 'utf-8');
 const internal_selector = '#body';
 
-// TODO: 색상 변경 모드 API
+// 색상 변경 모드 API
 
 // 테스트용 페이지
 router.get('/color-test', (req, res) => {
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
     req.app.render('color-test', function (err, html) {
-        res.end(html);
+        return res.send(html);
     });
 });
 
@@ -37,10 +37,10 @@ router.post('/color', (req, res) => {
     style = css_manager.makeStyle(internal_selector, color_mode.setting, color_mode.strict_mode)
     const result = css_manager.addStyle(html_data, style, style_category+' '+style_name);
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
-    res.end(result);
+    return res.send(result);
 });
 
-// TODO: 글자크기 API
+// 글자크기 API
 router.post('/text', (req, res) => {
     const style_category = 'text';
     const style_name = req.body.style_change;
@@ -49,7 +49,7 @@ router.post('/text', (req, res) => {
     const style = `${internal_selector} { font-size: ${parseInt(text_size)}% !important; }`;
     const result = css_manager.addStyle(html_data, style, style_category+' '+style_name);
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
-    res.end(result);
+    return res.send(result);
 });
 
 module.exports = router;

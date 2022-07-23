@@ -1,19 +1,6 @@
-const weak_color = require('./getColor');
-
-const getStyle = () => {
-    const style = [];
-    style.push(`#body html, body {`);
-    style.push(`    background-color: #ffffff;`);
-    style.push(`    color: #000000;`);
-    style.push('}');
-    style.push('#body a {');
-    style.push(`    color: #0072b1;`);
-    style.push('}');
-    style.push('#body ::placeholder {');
-    style.push(`    color: #a9a9a9;`);
-    style.push('}');
-    return style.join('\n');
-}
+const weak_color = require('./getWeakColor');
+const strict_mode = false;
+const setting = {};
 
 const getRenderedHtml = (html_data) => {
     const pattern = /#[\da-f]{6}/gi;
@@ -26,4 +13,4 @@ const getRenderedHtml = (html_data) => {
     return html_data;
 }
 
-module.exports = { getStyle, getRenderedHtml };
+module.exports = { strict_mode, setting, getRenderedHtml };

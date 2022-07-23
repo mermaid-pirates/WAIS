@@ -3,7 +3,7 @@ const axios = require('axios');
 const modifyLink = require('../services/modifyLink');
 const router = express.Router();
 
-router.get('/', async function(req, res) {
+router.get('/', async (req, res) => {
     const url = req.query.url;
     if (!url) res.render('help');
     delete req.headers.host;

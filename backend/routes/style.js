@@ -15,7 +15,7 @@ const internal_selector = '#body';
 router.get('/color-test', (req, res) => {
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
     req.app.render('color-test', function (err, html) {
-        return res.send(html);
+        return res.end(html);
     });
 });
 
@@ -37,7 +37,7 @@ router.post('/color', (req, res) => {
     style = css_manager.makeStyle(internal_selector, color_mode.setting, color_mode.strict_mode)
     const result = css_manager.addStyle(html_data, style, style_category+' '+style_name);
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
-    return res.send(result);
+    return res.end(result);
 });
 
 // 글자크기 API
@@ -49,7 +49,7 @@ router.post('/text', (req, res) => {
     const style = `${internal_selector} { font-size: ${parseInt(text_size)}% !important; }`;
     const result = css_manager.addStyle(html_data, style, style_category+' '+style_name);
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
-    return res.send(result);
+    return res.end(result);
 });
 
 module.exports = router;

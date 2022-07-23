@@ -1,4 +1,5 @@
 const axios = require('axios');
+var urlencode = require('urlencode'); 
 const express = require('express');
 const isUrl = require('../services/isUrl');
 const router = express.Router();
@@ -6,7 +7,7 @@ const router = express.Router();
 const modifyLink = require('../services/modifyLink');
 
 router.get('/', async (req, res, next) => {
-    const url = req.query.url;
+    const url = urlencode.decode(req.query.url);
     if (!url) return res.status(400).end('URL을 파라미터에 포함해야 합니다.');
     if (!isUrl(url)) return res.status(400).end('잘못된 형식의 URL입니다.');
 

@@ -22,8 +22,9 @@ router.get('/', async (req, res, next) => {
     });
     const html = result.data;
     if (!html) return res.status(404).send('HTML을 받아오지 못했습니다.');
+
     const modified_html = modifyLink(url, html);
-    res.send(modified_html);
+    return res.send(modified_html);
 });
 
 module.exports = router;

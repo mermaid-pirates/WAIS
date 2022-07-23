@@ -16,10 +16,11 @@ const ColorTable = {
 const getColor = (targetColor) => {
     const target_color_vector = convert.hex.rgb(targetColor.substr(1));
     const target_lightness = convert.hex.hsl(targetColor.substr(1))[2];
-    const min_distance = getDistanceOfVector(ColorTable.BLACK, ColorTable.WHITE);
+    let min_distance = getDistanceOfVector(ColorTable.BLACK, ColorTable.WHITE);
     let color = null;
+    let distance = null;
     Object.keys(ColorTable).forEach(key => {
-        const distance = getDistanceOfVector(ColorTable[key], target_color_vector);
+        distance = getDistanceOfVector(ColorTable[key], target_color_vector);
         if (distance < min_distance) {
             min_distance = distance;
             color = ColorTable[key];

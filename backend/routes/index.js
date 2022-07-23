@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
         const url = urlencode.decode(req.query.url);
         if (!url) return res.status(400).end('URL을 파라미터에 포함해야 합니다.');
         if (!isUrl(url)) return res.status(400).end('잘못된 형식의 URL입니다.');
-        console.log(req.headers);
         const result = await axios.get(url, {
             headers: {
                 connection: 'keep-alive',

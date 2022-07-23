@@ -9,7 +9,7 @@ const example_html_data = fs.readFileSync('data/sampleHTML', 'utf8');
 const no_url_html_data = fs.readFileSync('data/noUrlHTML', 'utf-8');
 const internal_selector = '#body';
 
-// TODO: 색상 변경 모드 API
+// 색상 변경 모드 API
 
 // 테스트용 페이지
 router.get('/color-test', (req, res) => {
@@ -40,7 +40,7 @@ router.post('/color', (req, res) => {
     res.end(result);
 });
 
-// TODO: 글자크기 API
+// 글자크기 API
 router.post('/text', (req, res) => {
     const style_category = 'text';
     const style_name = req.body.style_change;

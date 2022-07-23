@@ -1,17 +1,16 @@
-const createError = require('http-errors');
-const express = require('express');
+const createHttpError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-
 const logger = require('morgan');
 const cors = require('cors');
+
+const express = require('express');
+const app = express();
 
 const indexRouter = require('./routes/index');
 const styleRouter = require('./routes/style');
 
 const PORT = 4000;
-
-const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,7 +28,7 @@ app.use('/style', styleRouter);
 
 // catch 404 and forward to error handler
 app.use((_, __, next) => {
-    next(createError(404));
+    next(createHttpError(404));
 });
 
 // error handler

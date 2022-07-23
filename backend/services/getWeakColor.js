@@ -1,4 +1,4 @@
-var convert = require('color-convert');
+const convert = require('color-convert');
 
 const ColorTable = {
     BLACK: [0, 0, 0],

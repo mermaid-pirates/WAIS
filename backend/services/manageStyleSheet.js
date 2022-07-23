@@ -1,126 +1,79 @@
 const addStyle = (html, style, style_name) => {
-    const head_end = html.search('</head>');
-    return html.slice(0, head_end) 
+    const head_start = html.search('<head>')+6;
+    return html.slice(0, head_start) 
             +'<style class="wais '+style_name+'">'+style +'</style>'
-            + html.slice(head_end);
+            + html.slice(head_start);
 }
 
 const delStyle = (html, style_category) => {
-    const style_start = html.search('<style class="wais '+style_category+' ');
+    const style_start = html.search('<style class="wais '+style_category);
+    if(style_start == -1) return html;
     const style_end = style_start + html.slice(style_start).search('</style>')+8;
     return html.slice(0, style_start) + html.slice(style_end);
 }
 
-const makeStyle = () => {
+const makeStyle = (in_selector = '', setting, strict_mode) => {
+    const default_color         = setting.default_color         || 'black';
+    const light_color           = setting.light_color           || 'grey';
+    const link_color            = setting.link_color            || '#56b4e8';
+    const default_background    = setting.default_background    || 'white';
+    const light_background      = setting.light_background      || '#4d4d4d';
+    const default_border        = setting.default_border        || 'grey';
+    const default_placeholder   = setting.default_placeholder   || 'grey';
+    const strict_setting = strict_mode ? `
+        ${in_selector} * {
+            background-color: ${default_background} !important;
+            color: ${default_color};
+            border-color: ${default_border} !important;
+        }
+        ${in_selector} a, ${in_selector} a * { color: ${link_color}; }
+        ${in_selector} table { border-color: ${default_border} !important; }
+        ${in_selector} body,    ${in_selector} input,   
+        ${in_selector} textarea,${in_selector} keygen,  
+        ${in_selector} select,  ${in_selector} button {
+            color: ${default_color} !important;
+        }
+        ${in_selector} input,   ${in_selector} textarea,
+        ${in_selector} select,  ${in_selector} input[type="hidden" i],
+        ${in_selector} input[type="image" i],   ${in_selector} input[type="file" i],   
+        ${in_selector} input[type="radio" i],   ${in_selector} input[type="checkbox" i] {
+            background-color: ${light_background} !important;
+        }`: ``;
     return `
-/* tables */
-table { border-color: gray }
-thead { border-color: inherit }
-tbody { border-color: inherit }
-tfoot { border-color: inherit }
-tr { border-color: inherit }
-input, textarea, keygen, select, button {
-    color: black;
-}
-input, textarea, select 
-input[type="hidden" i], input[type="image" i], input[type="file" i],
-input[type="radio" i], input[type="checkbox" i] {
-    background-color: white;
-}
-::-webkit-input-placeholder {
-    color: darkGray;
-}
-input[type="file" i] {
-    color: inherit;
-}
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-    background-color: #f9f5b8 !important;
-    color: #000000 !important;
-}
-input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
-    color: ButtonText;
-    background-color: ButtonFace;
-}
-input[type="range" i] {
-    color: #909090;
-}
-input[type="button" i]:disabled, input[type="submit" i]:disabled, input[type="reset" i]:disabled,
-input[type="file" i]:disabled::-webkit-file-upload-button, button:disabled,
-select:disabled, keygen:disabled, optgroup:disabled, option:disabled,
-select[disabled]>option {
-    color: GrayText
-}
-input[type="color" i] {
-    background-color: ButtonFace;
-    /* Same as native_theme_base. */
-    border: 1px #a9a9a9 solid;
-}
-input[type="color" i]::-webkit-color-swatch {
-    background-color: #000000;
-}
-input[type="color" i][list]::-webkit-color-swatch {
-    border-color: #000000;
-}
-input::-webkit-calendar-picker-indicator:hover {
-    background-color: #eee;
-}
-select:-internal-list-box:focus option:checked {
-    background-color: -internal-active-list-box-selection !important;
-    color: -internal-active-list-box-selection-text !important;
-}
-select:-internal-list-box option:checked {
-    background-color: -internal-inactive-list-box-selection !important;
-    color: -internal-inactive-list-box-selection-text !important;
-}
-select:-internal-list-box:disabled option:checked,
-select:-internal-list-box option:checked:disabled {
-    color: gray !important;
-}
-meter::-webkit-meter-bar {
-    background: linear-gradient(to bottom, #ddd, #eee 20%, #ccc 45%, #ccc 55%, #ddd);
-}
-meter::-webkit-meter-optimum-value {
-    background: linear-gradient(to bottom, #ad7, #cea 20%, #7a3 45%, #7a3 55%, #ad7);
-}
-meter::-webkit-meter-suboptimum-value {
-    background: linear-gradient(to bottom, #fe7, #ffc 20%, #db3 45%, #db3 55%, #fe7);
-}
-meter::-webkit-meter-even-less-good-value {
-    background: linear-gradient(to bottom, #f77, #fcc 20%, #d44 45%, #d44 55%, #f77);
-}
-/* progress */
-progress::-webkit-progress-bar {
-    background-color: gray;
-}
-progress::-webkit-progress-value {
-    background-color: green;
-}
-/* inline elements */
-mark {
-    background-color: yellow;
-    color: black
-}
-/* states */
-:focus { 
-    outline: auto 5px -webkit-focus-ring-color
-}
-a:-webkit-any-link {
-    color: -webkit-link;
-}
-a:-webkit-any-link:active {
-    color: -webkit-activelink
-}
-/* HTML5 ruby elements */
-frameset {
-    border-color: inherit
-}
-dialog {
-    background: white;
-    color: black
-}
-dialog::backdrop {
-    background: rgba(0,0,0,0.1)
-}
+        ${strict_setting}
+        ${in_selector} ::-webkit-input-placeholder {
+            color: ${default_placeholder};
+        }
+        ${in_selector} input[type="button" i]:disabled, ${in_selector} input[type="submit" i]:disabled, 
+        ${in_selector} input[type="reset" i]:disabled,  ${in_selector} input[type="file" i]:disabled::-webkit-file-upload-button, 
+        ${in_selector} button:disabled, ${in_selector} select:disabled, 
+        ${in_selector} keygen:disabled, ${in_selector} optgroup:disabled, 
+        ${in_selector} option:disabled, ${in_selector} select[disabled]>option {
+            color: ${light_color};
+        }
+        ${in_selector} select:-internal-list-box:disabled option:checked,
+        ${in_selector} select:-internal-list-box option:checked:disabled {
+            color: ${light_color} !important;
+        }
+        /* progress */
+        ${in_selector} progress::-webkit-progress-value {
+            background-color: #009f73;
+        }
+        /* color weakness */
+        meter::-webkit-meter-bar {
+            background: linear-gradient(to bottom, #ddd, #eee 20%, #ccc 45%, #ccc 55%, #ddd);
+        }
+        meter::-webkit-meter-optimum-value {
+            background: linear-gradient(to bottom, #4dffcc, #99ffe2 20%, #00e6a4 45%, #00e6a4 55%, #4dffcc);
+        }
+        meter::-webkit-meter-suboptimum-value {
+            background: linear-gradient(to bottom, #f3ea72, #fbf8d0 20%, #ede02c 45%, #ede02c 55%, #f3ea72);
+        }
+        meter::-webkit-meter-even-less-good-value {
+            background: linear-gradient(to bottom, #dda2c3, #f1dae7 20%, #c86a9f 45%, #c86a9f 55%, #dda2c3);
+        }
+        /* inline elements */
+        mark { background-color: #f0e542; }
     `;
 }
 

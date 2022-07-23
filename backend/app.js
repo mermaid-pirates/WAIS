@@ -40,7 +40,7 @@ app.use((err, req, res, next) => {
 
      // render the error page
     res.status(err.status || 500);
-    res.end(erro.message);
+    res.end(err.message);
 });
 
 app.listen(PORT, () => {

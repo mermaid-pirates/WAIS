@@ -1,22 +1,28 @@
-const express = require('express');
 const axios = require('axios');
-const modifyLink = require('../services/modifyLink');
+const express = require('express');
+const isUrl = require('../services/isUrl');
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+const modifyLink = require('../services/modifyLink');
+
+router.get('/', async (req, res, next) => {
     const url = req.query.url;
-    if (!url) res.render('help');
+    if (!url) return res.status(400).end('URL을 파라미터에 포함해야 합니다.');
+    if (!isUrl(url)) return res.status(400).end('잘못된 형식의 URL입니다.');
+
     delete req.headers.host;
-    try {
-        const result = await axios.get(url, {
-            headers: {...req.headers}
-        });
-        const html = result.data;
-        const modify_html = modifyLink(url, html);
-        res.end(modify_html);
-    } catch (e) {
-        console.error(e);
-    }
+    delete req.headers.origin;
+    const result = await axios.get(url, {
+        headers: {
+            'user-agent': req.headers['user-agent'],
+            'accept': '*/*',
+            'content-type': 'application/json',
+        }
+    });
+    const html = result.data;
+    if (!html) return res.status(404).send('HTML을 받아오지 못했습니다.');
+    const modified_html = modifyLink(url, html);
+    res.send(modified_html);
 });
 
 module.exports = router;

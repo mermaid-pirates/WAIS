@@ -1,18 +1,15 @@
-const addStyle = (html, style, style_name) => {
+const common = require('../data/common');
+
+const setStyle = (html) => {
     const head_start = html.search('<head>')+6;
-    return html.slice(0, head_start) 
-            +'<style class="wais '+style_name+'">'+style +'</style>'
-            + html.slice(head_start);
+    let result = html.slice(0, head_start);
+    common.applied_style.forEach((value) => {
+        result += value;
+    });
+    return result + html.slice(head_start);
 }
 
-const delStyle = (html, style_category) => {
-    const style_start = html.search('<style class="wais '+style_category);
-    if(style_start == -1) return html;
-    const style_end = style_start + html.slice(style_start).search('</style>')+8;
-    return html.slice(0, style_start) + html.slice(style_end);
-}
-
-const makeStyle = (in_selector = '', setting, strict_mode) => {
+const makeStyle = (style_name, in_selector = '', setting, strict_mode) => {
     const default_color         = setting.default_color         || 'black';
     const light_color           = setting.light_color           || 'grey';
     const link_color            = setting.link_color            || '#56b4e8';
@@ -40,6 +37,7 @@ const makeStyle = (in_selector = '', setting, strict_mode) => {
             background-color: ${light_background} !important;
         }`: ``;
     return `
+    <style class="wais ${style_name}">
         ${strict_setting}
         ${in_selector} ::-webkit-input-placeholder {
             color: ${default_placeholder};
@@ -60,21 +58,22 @@ const makeStyle = (in_selector = '', setting, strict_mode) => {
             background-color: #009f73;
         }
         /* color weakness */
-        meter::-webkit-meter-bar {
+        ${in_selector} meter::-webkit-meter-bar {
             background: linear-gradient(to bottom, #ddd, #eee 20%, #ccc 45%, #ccc 55%, #ddd);
         }
-        meter::-webkit-meter-optimum-value {
+        ${in_selector} meter::-webkit-meter-optimum-value {
             background: linear-gradient(to bottom, #4dffcc, #99ffe2 20%, #00e6a4 45%, #00e6a4 55%, #4dffcc);
         }
-        meter::-webkit-meter-suboptimum-value {
+        ${in_selector} meter::-webkit-meter-suboptimum-value {
             background: linear-gradient(to bottom, #f3ea72, #fbf8d0 20%, #ede02c 45%, #ede02c 55%, #f3ea72);
         }
-        meter::-webkit-meter-even-less-good-value {
+        ${in_selector} meter::-webkit-meter-even-less-good-value {
             background: linear-gradient(to bottom, #dda2c3, #f1dae7 20%, #c86a9f 45%, #c86a9f 55%, #dda2c3);
         }
         /* inline elements */
-        mark { background-color: #f0e542; }
+        ${in_selector} mark { background-color: #f0e542; }
+    </style>
     `;
 }
 
-module.exports = { addStyle, delStyle, makeStyle };
+module.exports = { setStyle, makeStyle };

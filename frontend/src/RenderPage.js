@@ -7,7 +7,7 @@ let model;
 const ml = async (img) =>{
     model = await mobilenet.load();
     const predictions = await model.classify(img);
-    console.log(predictions[0].className)
+    // console.log(predictions[0].className)
     return predictions[0].className;
 }
 
@@ -33,7 +33,7 @@ function RenderPage(props){
         const imgs = page.querySelectorAll('img');
 
         if(imgs.length !== 0){
-            console.log(imgs);
+            // console.log(imgs);
             const promiseList = Array.from(imgs).map(async (element)=>{
                 // console.log(element);
                 if(!element.hasAttribute('alt')||element.alt === ""){

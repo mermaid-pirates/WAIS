@@ -13,16 +13,6 @@ const api = {
   text_sizing: ['text', 'text_size']
 };
 
-const overEvent = (e)=>{
-  e.target.style.borderRadius = '8px';
-  e.target.style.boxShadow = "0.5px 0.5px 10px 5px orange";
-}
-
-const outEvent = (e)=>{
-  e.target.style.borderRadius = '';
-  e.target.style.boxShadow = "";
-}
-
 let tempOrignPage = "";
 
 function App() {
@@ -54,16 +44,6 @@ function App() {
     })
   }
 
-  const focusTarget = (e) => {
-    if(e.target.checked) {
-      window.addEventListener("mouseover", overEvent)
-      window.addEventListener("mouseout", outEvent)
-    } else {
-      window.removeEventListener("mouseover", overEvent);
-      window.addEventListener("mouseout", outEvent);
-    }
-  }
-
   const render_page = <RenderPage server={request_url} render={initOriginPage} body={renderHTML}/>
   const tool_maneger = <ToolBar e={requestAPI} api={api} />;
 
@@ -79,11 +59,7 @@ function App() {
           <input type="submit" value="search"></input>
         </form>
 
-        <label className="toggle-focus-effect">
-          <label style={{"visibility": "hidden", "position":"absolute"}}>마우스포커싱</label>
-          <input type="checkbox" onClick={focusTarget} />
-          <span className="slider round"></span>
-        </label>
+        
         
         <div tabIndex={0} id="tool-box">
           {tool_maneger}

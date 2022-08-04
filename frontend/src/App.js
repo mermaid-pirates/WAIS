@@ -40,6 +40,7 @@ function App() {
       return res.text();
     })
     .then((html)=>{
+      console.log(html);
       setHTML(html);
     })
   }

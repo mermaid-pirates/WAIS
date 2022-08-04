@@ -110,13 +110,7 @@ body {
 }
 
 .rendered-page::-webkit-scrollbar {
-    width: 10px;
-}
-.rendered-page::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
-}
-.rendered-page::-webkit-scrollbar-track {
-    background-color: grey;
+    display: none;
 }
 
 /* The switch - the box around the slider */

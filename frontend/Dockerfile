@@ -1,6 +1,15 @@
-#이런식으로하면 빌드는 수동, 자동화시킬 수도 있긴 함.
+# build
+FROM node:16.16.0 as builder
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+COPY package.json .
+RUN npm install
+COPY ./ ./
+RUN npm run build
+
+# run
 FROM nginx:latest
-COPY ./build/ /usr/share/nginx/html/
+COPY --from=builder /usr/src/app/build /usr/share/nginx/html/
 RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY ./nginx.conf /etc/nginx/conf.d
 EXPOSE 80

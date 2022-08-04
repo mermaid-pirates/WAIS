@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const css_manager = require('../services/manageStyleSheet');
+const common = require('../data/common');
 const example_html_data = fs.readFileSync('data/sampleHTML', 'utf8');
 const no_url_html_data = fs.readFileSync('data/noUrlHTML', 'utf-8');
-const internal_selector = '#body';
+const INTERNAL_SELECTOR = '#body';
+const css_manager = require('../services/manageStyleSheet');
 const color_style = new Map([
     ['dark', require('../services/colorDark')], 
     ['color_weakness' , require('../services/colorWeakness')],
@@ -25,15 +26,18 @@ router.post('/color', (req, res) => {
     const style_category = 'color';
     const url = req.body.url;
     const style_name = req.body.style_change;
-    let html_data = req.body.html_data || no_url_html_data;
-    let style = null;
-    if(style_name == 'original' && url != undefined) { res.redirect('/?url='+url); }
-    const color_mode = color_style.get(style_name);
+    let html_data = common.cached_result.get(url) || no_url_html_data;
+    if(style_name == 'original') { res.end(html_data); }
+    const applied_style = common.applied_style;
 
-    html_data = css_manager.delStyle(html_data, style_category);
+    const color_mode = color_style.get(style_name);
     html_data = color_mode.getRenderedHtml(html_data);
-    style = css_manager.makeStyle(internal_selector, color_mode.setting, color_mode.strict_mode)
-    const result = css_manager.addStyle(html_data, style, style_category+' '+style_name);
+
+    const style = css_manager.makeStyle(style_category+' '+style_name, INTERNAL_SELECTOR, color_mode.setting, color_mode.strict_mode);
+    if(applied_style.has(style_category)) { applied_style.delete(style_category); }
+    applied_style.set(style_category, style);
+
+    const result = css_manager.setStyle(html_data);
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
     return res.end(result);
 });
@@ -41,11 +45,17 @@ router.post('/color', (req, res) => {
 // 글자크기 API
 router.post('/text', (req, res) => {
     const style_category = 'text';
+    const url = req.body.url;
     const style_name = req.body.style_change;
     const text_size = req.body.text_size;
-    const html_data = css_manager.delStyle(req.body.html_data, style_category) || example_html_data;
-    const style = `${internal_selector} { font-size: ${parseInt(text_size)}% !important; }`;
-    const result = css_manager.addStyle(html_data, style, style_category+' '+style_name);
+    const html_data = common.cached_result.get(url) || no_url_html_data;
+    const applied_style = common.applied_style;
+
+    const style = `<style class="wais ${style_category}+' '+${style_name}"> ${INTERNAL_SELECTOR} { font-size: ${parseInt(text_size)}% !important; } </style>`;
+    if(applied_style.has(style_category)) { applied_style.delete(style_category); }
+    applied_style.set(style_category, style);
+
+    const result = css_manager.setStyle(html_data);
     res.writeHead('200', { 'Content-Type': 'text/html; charset=utf8' });
     return res.end(result);
 });

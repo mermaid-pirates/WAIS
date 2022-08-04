@@ -5,18 +5,18 @@ const isUrl = require('../services/isUrl');
 const router = express.Router();
 
 const modifyLink = require('../services/modifyLink');
-
-const cachedResult = new Map();
+const common = require('../data/common');
 
 router.get('/', async (req, res) => {
+    const cached_result = common.cached_result;
     try {
         const url = urlencode.decode(req.query.url);
         if (!url) return res.status(400).end('URL을 파라미터에 포함해야 합니다.');
         if (!isUrl(url)) return res.status(400).end('잘못된 형식의 URL입니다.');
 
         // cache hit
-        if (cachedResult.get(url)) {
-            return res.end(cachedResult.get(url));
+        if (cached_result.get(url)) {
+            return res.end(cached_result.get(url));
         }
 
         // cache miss
@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
     
         // caching
         const modified_html = modifyLink(url, html);
-        cachedResult.set(url, modified_html);
+        cached_result.set(url, modified_html);
 
         return res.end(modified_html);
     } catch (e) {

@@ -60,7 +60,7 @@ body {
 }
 
 .App-madebymermaid #tool-box {
-    width: 500px;
+    width: 600px;
     position: absolute;
     top: 0; right: 0;
     z-index: 30 !important;
@@ -87,7 +87,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    top: 75px; left: 500px;
+    top: 75px; left: 600px;
     padding: 30px;
     background-color: #fff;
     border-bottom-left-radius: 20px;
@@ -97,7 +97,7 @@ body {
 }
 
 .transform {
-    transform: translateX(-500px);
+    transform: translateX(-600px);
 }
 
 .rendered-page {

@@ -59,8 +59,8 @@ function App() {
         <img className='logo_img' src='./mermaid_pirate.png' alt="group_logo"></img>
         </a>
         <form className='service_form form_add_style' action="/searching">
-          <input type="url" name="search" placeholder="Enter the Site..."></input>
-          <input type="submit" value="search"></input>
+          <input type="url" name="search" placeholder="링크를 입력하세요"></input>
+          <input type="submit" value="접속"></input>
         </form>
 
         

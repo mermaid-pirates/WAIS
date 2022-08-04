@@ -24,6 +24,10 @@ function App() {
     setHTML(pageHTML);
   }
 
+  const setPage = (pageHTML) => {
+    setHTML(pageHTML);
+  }
+
   const requestAPI = async (api_event, current_url)=>{
     let res;
     if(api_event[2]){
@@ -40,12 +44,11 @@ function App() {
       return res.text();
     })
     .then((html)=>{
-      console.log(html);
       setHTML(html);
     })
   }
 
-  const render_page = <RenderPage server={request_url} render={initOriginPage} body={renderHTML}/>
+  const render_page = <RenderPage server={request_url} init={initOriginPage} render={setPage} body={renderHTML}/>
   const tool_maneger = <ToolBar e={requestAPI} api={api} />;
 
   return (

@@ -22,7 +22,7 @@ function RenderPage(props){
                 return res.text()
             })
             .then(html_text => {
-                props.render(html_text)
+                props.init(html_text)
             })
     }, [])
     
@@ -33,7 +33,6 @@ function RenderPage(props){
         const imgs = page.querySelectorAll('img');
 
         if(imgs.length !== 0){
-            console.log(imgs);
             const promiseList = Array.from(imgs).map(async (element)=>{
                 // console.log(element);
                 if(!element.hasAttribute('alt')||element.alt === ""){
@@ -46,7 +45,6 @@ function RenderPage(props){
 
             Promise.all(promiseList)
             .then(()=>{
-                // console.log(page)
                 props.render("<head></head>" + page.innerHTML);
             })
 

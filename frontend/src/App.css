@@ -84,20 +84,19 @@ body {
 }
 
 .App-madebymermaid #tool-box .tool-bar #burger-list {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     position: relative;
-    top: 75px; left: 600px;
+    top: 75px;
     padding: 30px;
     background-color: #fff;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
     box-shadow: 0 0 5px #444;
-    transition: all 0.8s;
 }
 
 .transform {
-    transform: translateX(-600px);
+    display: flex !important;
 }
 
 .rendered-page {

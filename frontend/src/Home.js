@@ -23,15 +23,15 @@ function Home() {
           </p>
 
           <form className='service_form' action="/searching">
-          <input type="url" name="search" placeholder="Search..."></input>
-          <input type="submit" value="Go!"></input>
+          <input type="url" name="search" placeholder="접속 링크를 입력해주세요..."></input>
+          <input type="submit" value="접속"></input>
         </form>
         </div>
         
       </section>
       <footer className='footer'>
         <p className='copyright'>
-          @2022, 인어공주 해적단, All rights reserved.
+        ⓒ2022, 인어공주 해적단, All rights reserved.
         </p>
       </footer>
     </div>

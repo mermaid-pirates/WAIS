@@ -4,7 +4,7 @@ import RenderPage from './RenderPage';
 import ToolBar from './toolBar';
 import request_style from './api/requestStyle';
 
-const request_url = 'http://127.0.0.1:4000/'; // 사용시 '사이트 주소/4000'으로 수정해야함
+const request_url = 'http://127.0.0.1:4000/'; // 사용시 '사이트 주소:4000'으로 수정해야함
 const api = {
   dark: ['color', 'dark'],
   color_weakness: ['color', 'color_weakness'],

@@ -48,7 +48,7 @@ jobs:
         REPO2: waidb # 백엔드 레포 이름
       run: |
         cd frontend
-        docker build -t $REPO2 .
+        docker build -t $REPO1 .
         docker tag $REPO1:latest $NAME/$REPO1:latest
         docker push $NAME/$REPO1:latest
         cd ../backend

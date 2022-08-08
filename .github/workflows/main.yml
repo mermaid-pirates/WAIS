@@ -45,7 +45,7 @@ jobs:
       env:
         NAME: ssggyu # 계정 명
         REPO1: waisf # 프론트엔드 레포 이름
-        REPO2: waidb # 백엔드 레포 이름
+        REPO2: waisb # 백엔드 레포 이름
       run: |
         cd frontend
         docker build -t $REPO1 .

@@ -31,3 +31,28 @@ jobs:
       - run: git branch -D main
       - run: git branch -m main
       - run: git push https://github.com/mermaid-pirates/mermaid-frontend.git main --force
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{secrets.DOCKERHUB_USERNAME}}
+        password: ${{secrets.DOCKERHUB_TOKEN}}
+    
+    - name: build and release to DockerHub
+      env:
+        NAME: ssggyu # 계정 명
+        REPO1: waisf # 프론트엔드 레포 이름
+        REPO2: waidb # 백엔드 레포 이름
+      run: |
+        cd frontend
+        docker build -t $REPO2 .
+        docker tag $REPO1:latest $NAME/$REPO1:latest
+        docker push $NAME/$REPO1:latest
+        cd ../backend
+        docker build -t $REPO2 .
+        docker tag $REPO2:latest $NAME/$REPO2:latest
+        docker push $NAME/$REPO2:latest
+        

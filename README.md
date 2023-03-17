@@ -15,6 +15,8 @@ npm i
 npm start
 ```
 
+[더 자세히 살펴보기](https://github.com/mermaid-pirates/WAIS/wiki)
+
 ## 🤝 Team Info
 | 노재원 [(nojaewon)](https://github.com/nojaewon) | 임연지 [(Yeonji-Lim)](https://github.com/Yeonji-Lim) | 하이현 [(hyh1016)](https://github.com/hyh1016) | 이승규 [(seungy0)](https://github.com/seungy0) |
 | :---: | :---: | :---: | :---: | 
